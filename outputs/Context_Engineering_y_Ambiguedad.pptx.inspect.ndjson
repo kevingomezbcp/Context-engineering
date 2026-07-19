@@ -1,0 +1,440 @@
+{"kind":"deck","id":"pr/frmhd5","name":"Deck"}
+{"kind":"layout","layoutId":"2deb0cc1-b178-4d61-9ea3-e07a75df9b82","name":"Master","type":"master"}
+{"kind":"layout","layoutId":"e12cec0e-0a15-4c95-b6f7-ee3e2a0d60d6","name":"Title Slide","type":"title"}
+{"kind":"slide","id":"sl/m88qvn","slide":1,"title":"ESTRATEGIA · RAG · DECISIONES","textShapes":11}
+{"kind":"shape","id":"sh/03m9sfyd","slide":1,"bbox":[840,95,420,420]}
+{"kind":"shape","id":"sh/z2dsjaxs","slide":1,"bbox":[710,360,360,360]}
+{"kind":"shape","id":"sh/e1krq5g7","slide":1,"bbox":[72,60,290,30]}
+{"kind":"textbox","id":"sh/98vapkfu","slide":1,"text":"ESTRATEGIA · RAG · DECISIONES","textPreview":"ESTRATEGIA · RAG · DECISIONES","textChars":29,"textLines":1,"bbox":[84,64,266,22]}
+{"kind":"textbox","id":"sh/o7m9wfyp","slide":1,"text":"Context Engineering","textPreview":"Context Engineering","textChars":19,"textLines":1,"bbox":[72,142,720,92]}
+{"kind":"textbox","id":"sh/n6dsnax4","slide":1,"text":"y manejo de ambigüedad","textPreview":"y manejo de ambigüedad","textChars":22,"textLines":1,"bbox":[72,230,690,74]}
+{"kind":"textbox","id":"sh/m54ru5gj","slide":1,"text":"Diseñar la información que el modelo necesita — y saber cuándo preguntar.","textPreview":"Diseñar la información que el modelo necesita — y saber cuándo preguntar.","textChars":73,"textLines":1,"bbox":[72,330,610,88]}
+{"kind":"textbox","id":"sh/pcbqdgzq","slide":1,"text":"{Nombre}  ·  {Organización}  ·  {Fecha}","textPreview":"{Nombre}  ·  {Organización}  ·  {Fecha}","textChars":39,"textLines":1,"bbox":[72,610,650,30]}
+{"kind":"shape","id":"sh/4b29kvy5","slide":1,"bbox":[925,378,133,-198]}
+{"kind":"shape","id":"sh/yxkre18j","slide":1,"bbox":[925,378,177,-98]}
+{"kind":"shape","id":"sh/zyt8n6p4","slide":1,"bbox":[925,378,185,14]}
+{"kind":"shape","id":"sh/0zm9grqp","slide":1,"bbox":[925,378,125,127]}
+{"kind":"shape","id":"sh/l0vqpw7a","slide":1,"bbox":[740,378,125,0]}
+{"kind":"shape","id":"sh/ml4ri18f","slide":1,"bbox":[865,348,120,60]}
+{"kind":"textbox","id":"sh/7md8r6p0","slide":1,"text":"QUERY","textPreview":"QUERY","textChars":5,"textLines":1,"bbox":[865,362,120,26]}
+{"kind":"shape","id":"sh/8nm9kbql","slide":1,"bbox":[1028,150,100,60]}
+{"kind":"textbox","id":"sh/9ovqtg76","slide":1,"text":"Z₁","textPreview":"Z₁","textChars":2,"textLines":1,"bbox":[1028,164,100,26]}
+{"kind":"shape","id":"sh/up4rml8r","slide":1,"bbox":[1072,250,100,60]}
+{"kind":"textbox","id":"sh/vqd8vqpc","slide":1,"text":"Z₂","textPreview":"Z₂","textChars":2,"textLines":1,"bbox":[1072,264,100,26]}
+{"kind":"shape","id":"sh/rux8jq54","slide":1,"bbox":[1080,362,100,60]}
+{"kind":"textbox","id":"sh/6to7al4z","slide":1,"text":"Z₃","textPreview":"Z₃","textChars":2,"textLines":1,"bbox":[1080,376,100,26]}
+{"kind":"shape","id":"sh/twfqlgna","slide":1,"bbox":[1020,475,100,60]}
+{"kind":"textbox","id":"sh/sv6pcvmp","slide":1,"text":"Z₄","textPreview":"Z₄","textChars":2,"textLines":1,"bbox":[1020,489,100,26]}
+{"kind":"textbox","id":"sh/jqx8f658","slide":1,"text":"01","textPreview":"01","textChars":2,"textLines":1,"bbox":[1160,676,48,22]}
+{"kind":"notes","id":"nt/m88qvn","slide":1,"text":""}
+{"kind":"slide","id":"sl/ly9xzg","slide":2,"title":"02  /  EL PROBLEMA HUMANO","textShapes":12}
+{"kind":"textbox","id":"sh/xkjmt8f2","slide":2,"text":"02  /  EL PROBLEMA HUMANO","textPreview":"02  /  EL PROBLEMA HUMANO","textChars":25,"textLines":1,"bbox":[72,38,430,22]}
+{"kind":"textbox","id":"sh/ahsnytwb","slide":2,"text":"Una pregunta simple puede esconder cinco preguntas","textPreview":"Una pregunta simple puede esconder cinco preguntas","textChars":50,"textLines":1,"bbox":[72,72,1136,116]}
+{"kind":"shape","id":"sh/bi14ryxw","slide":2,"bbox":[72,196,1136,0]}
+{"kind":"textbox","id":"sh/ofqlw3e5","slide":2,"text":"“¿Cuál es el banco más grande?”","textPreview":"“¿Cuál es el banco más grande?”","textChars":31,"textLines":1,"bbox":[138,215,1004,78]}
+{"kind":"shape","id":"sh/pgjmpofq","slide":2,"bbox":[95,355,200,44]}
+{"kind":"textbox","id":"sh/2d83utwf","slide":2,"text":"activos","textPreview":"activos","textChars":7,"textLines":1,"bbox":[107,363,176,28]}
+{"kind":"shape","id":"sh/neh4nyxk","slide":2,"bbox":[315,355,200,44]}
+{"kind":"textbox","id":"sh/0bqlsje9","slide":2,"text":"capitalización","textPreview":"capitalización","textChars":14,"textLines":1,"bbox":[327,363,176,28]}
+{"kind":"shape","id":"sh/1czmlofu","slide":2,"bbox":[535,355,200,44]}
+{"kind":"textbox","id":"sh/9wzu98jy","slide":2,"text":"clientes","textPreview":"clientes","textChars":8,"textLines":1,"bbox":[547,363,176,28]}
+{"kind":"shape","id":"sh/8vqtg32d","slide":2,"bbox":[755,355,200,44]}
+{"kind":"textbox","id":"sh/nuhc7y1s","slide":2,"text":"ingresos","textPreview":"ingresos","textChars":8,"textLines":1,"bbox":[767,363,176,28]}
+{"kind":"shape","id":"sh/mt8betk7","slide":2,"bbox":[975,355,200,44]}
+{"kind":"textbox","id":"sh/lszu58jm","slide":2,"text":"presencia","textPreview":"presencia","textChars":9,"textLines":1,"bbox":[987,363,176,28]}
+{"kind":"textbox","id":"sh/0rqtc321","slide":2,"text":"Una respuesta puede ser correcta… y aun así responder a la intención equivocada.","textPreview":"Una respuesta puede ser correcta… y aun así responder a la intención equivocada.","textChars":80,"textLines":1,"bbox":[170,470,940,66]}
+{"kind":"textbox","id":"sh/zqhc3y1w","slide":2,"text":"La ambigüedad no es ruido lingüístico: es una decisión oculta que el sistema debe gestionar.","textPreview":"La ambigüedad no es ruido lingüístico: es una decisión oculta que el sistema debe gestionar.","textChars":92,"textLines":1,"bbox":[220,565,840,58]}
+{"kind":"textbox","id":"sh/yp8batkb","slide":2,"text":"Ejemplo conceptual basado en context.md","textPreview":"Ejemplo conceptual basado en context.md","textChars":39,"textLines":1,"bbox":[72,678,1045,20]}
+{"kind":"textbox","id":"sh/d4fu1ojq","slide":2,"text":"02","textPreview":"02","textChars":2,"textLines":1,"bbox":[1160,676,48,22]}
+{"kind":"notes","id":"nt/ly9xzg","slide":2,"text":""}
+{"kind":"slide","id":"sl/kjgv07","slide":3,"title":"03  /  DE PROMPTS A SISTEMAS","textShapes":7}
+{"kind":"textbox","id":"sh/5kfylknu","slide":3,"text":"03  /  DE PROMPTS A SISTEMAS","textPreview":"03  /  DE PROMPTS A SISTEMAS","textChars":28,"textLines":1,"bbox":[72,38,430,22]}
+{"kind":"textbox","id":"sh/yh4zq54j","slide":3,"text":"Context Engineering diseña el entorno de decisión del modelo","textPreview":"Context Engineering diseña el entorno de decisión del modelo","textChars":60,"textLines":1,"bbox":[72,72,1136,70]}
+{"kind":"shape","id":"sh/jixgja54","slide":3,"bbox":[72,156,1136,0]}
+{"kind":"shape","id":"sh/wfmhovmd","slide":3,"bbox":[72,182,190,30]}
+{"kind":"textbox","id":"sh/xgvyh0ny","slide":3,"text":"DEFINICIÓN OPERACIONAL","textPreview":"DEFINICIÓN OPERACIONAL","textChars":22,"textLines":1,"bbox":[84,186,166,22]}
+{"kind":"textbox","id":"sh/ad4zml47","slide":3,"text":"Seleccionar, generar, estructurar y administrar la información que condiciona la respuesta.","textPreview":"Seleccionar, generar, estructurar y administrar la información que condiciona la respuesta.","textChars":91,"textLines":1,"bbox":[72,238,420,120]}
+{"kind":"textbox","id":"sh/bedgfq5s","slide":3,"text":"No es solo prompt engineering. Incluye recuperación, memoria, herramientas, estructura, compresión y ensamblaje dinámico.","textPreview":"No es solo prompt engineering. Incluye recuperación, memoria, herramientas, estructura, compresión y ensamblaje dinámico.","textChars":121,"textLines":1,"bbox":[72,388,420,118]}
+{"kind":"shape","id":"sh/gbqh0zmh","slide":3,"bbox":[530,184,678,388]}
+{"kind":"textbox","id":"sh/pcbatw7e","slide":3,"text":"Fuente: survey_context.pdf, Fig. 3; imagen suministrada en el proyecto","textPreview":"Fuente: survey_context.pdf, Fig. 3; imagen suministrada en el proyecto","textChars":70,"textLines":1,"bbox":[72,678,1045,20]}
+{"kind":"textbox","id":"sh/ob2t0rq9","slide":3,"text":"03","textPreview":"03","textChars":2,"textLines":1,"bbox":[1160,676,48,22]}
+{"kind":"image","id":"im/w7q54n2t","slide":3,"name":"","geometry":"roundRect","alt":"Framework de Context Engineering","bbox":[552,210,634,336]}
+{"kind":"notes","id":"nt/kjgv07","slide":3,"text":""}
+{"kind":"slide","id":"sl/as5dv7","slide":4,"title":"04  /  TESIS CENTRAL","textShapes":13}
+{"kind":"textbox","id":"sh/0zqxsbul","slide":4,"text":"04  /  TESIS CENTRAL","textPreview":"04  /  TESIS CENTRAL","textChars":20,"textLines":1,"bbox":[72,38,430,22]}
+{"kind":"textbox","id":"sh/fyhgz6t0","slide":4,"text":"Más contexto no implica una mejor respuesta","textPreview":"Más contexto no implica una mejor respuesta","textChars":43,"textLines":1,"bbox":[72,72,1136,70]}
+{"kind":"shape","id":"sh/ex8f61cf","slide":4,"bbox":[72,156,1136,0]}
+{"kind":"textbox","id":"sh/p4jy5gb2","slide":4,"text":"El objetivo real es maximizar","textPreview":"El objetivo real es maximizar","textChars":29,"textLines":1,"bbox":[72,210,510,40]}
+{"kind":"textbox","id":"sh/o3qhwbuh","slide":4,"text":"información útil  /  token","textPreview":"información útil  /  token","textChars":26,"textLines":1,"bbox":[72,256,660,72]}
+{"kind":"textbox","id":"sh/n2hg36tc","slide":4,"text":"I(Y; C | X)  /  |C|","textPreview":"I(Y; C | X)  /  |C|","textChars":19,"textLines":1,"bbox":[72,358,630,76]}
+{"kind":"shape","id":"sh/218fu1cr","slide":4,"bbox":[760,231,420,62]}
+{"kind":"shape","id":"sh/58fytcby","slide":4,"bbox":[760,231,105,62]}
+{"kind":"textbox","id":"sh/476x07ud","slide":4,"text":"señal","textPreview":"señal","textChars":5,"textLines":1,"bbox":[780,249,68,24]}
+{"kind":"textbox","id":"sh/q9knypk7","slide":4,"text":"ruido · redundancia · conflicto","textPreview":"ruido · redundancia · conflicto","textChars":31,"textLines":1,"bbox":[875,249,284,24]}
+{"kind":"textbox","id":"sh/rato7uls","slide":4,"text":"Un contexto corto y preciso puede superar a uno largo y ruidoso.","textPreview":"Un contexto corto y preciso puede superar a uno largo y ruidoso.","textChars":64,"textLines":1,"bbox":[760,331,420,72]}
+{"kind":"shape","id":"sh/sb250z2d","slide":4,"bbox":[760,454,130,44]}
+{"kind":"textbox","id":"sh/dcb6943y","slide":4,"text":"seleccionar","textPreview":"seleccionar","textChars":11,"textLines":1,"bbox":[772,462,106,28]}
+{"kind":"shape","id":"sh/edkn29kj","slide":4,"bbox":[904,454,115,44]}
+{"kind":"textbox","id":"sh/zetobulo","slide":4,"text":"ordenar","textPreview":"ordenar","textChars":7,"textLines":1,"bbox":[916,462,91,28]}
+{"kind":"shape","id":"sh/0f254z29","slide":4,"bbox":[1033,454,147,44]}
+{"kind":"textbox","id":"sh/1gb6d43u","slide":4,"text":"comprimir","textPreview":"comprimir","textChars":9,"textLines":1,"bbox":[1045,462,123,28]}
+{"kind":"textbox","id":"sh/mh4769kf","slide":4,"text":"Fuente: context.md — información útil por token","textPreview":"Fuente: context.md — información útil por token","textChars":47,"textLines":1,"bbox":[72,678,1045,20]}
+{"kind":"textbox","id":"sh/nidofel0","slide":4,"text":"04","textPreview":"04","textChars":2,"textLines":1,"bbox":[1160,676,48,22]}
+{"kind":"notes","id":"nt/as5dv7","slide":4,"text":""}
+{"kind":"slide","id":"sl/1ubg2x","slide":5,"title":"05  /  MODELAMIENTO DEL CONTEXTO","textShapes":13}
+{"kind":"textbox","id":"sh/zq14j6p0","slide":5,"text":"05  /  MODELAMIENTO DEL CONTEXTO","textPreview":"05  /  MODELAMIENTO DEL CONTEXTO","textChars":32,"textLines":1,"bbox":[72,38,430,22]}
+{"kind":"textbox","id":"sh/0ralsbql","slide":5,"text":"El contexto cambia la distribución de los próximos tokens","textPreview":"El contexto cambia la distribución de los próximos tokens","textChars":57,"textLines":1,"bbox":[72,72,1136,116]}
+{"kind":"shape","id":"sh/ls3mlg76","slide":5,"bbox":[72,196,1136,0]}
+{"kind":"textbox","id":"sh/mtc3ul8r","slide":5,"text":"Pθ(yₜ | X, C, y<ₜ)","textPreview":"Pθ(yₜ | X, C, y<ₜ)","textChars":18,"textLines":1,"bbox":[72,252,570,80]}
+{"kind":"textbox","id":"sh/nul4n6pc","slide":5,"text":"Pθ(Y | X, C) = ∏ₜ Pθ(yₜ | X, C, y<ₜ)","textPreview":"Pθ(Y | X, C) = ∏ₜ Pθ(yₜ | X, C, y<ₜ)","textChars":36,"textLines":1,"bbox":[72,360,610,70]}
+{"kind":"textbox","id":"sh/8fulwbqx","slide":5,"text":"El contexto aporta cuando aumenta la probabilidad del token correcto y reduce alternativas incorrectas.","textPreview":"El contexto aporta cuando aumenta la probabilidad del token correcto y reduce alternativas incorrectas.","textChars":103,"textLines":1,"bbox":[72,460,530,100]}
+{"kind":"shape","id":"sh/9g3mpg72","slide":5,"bbox":[700,242,460,322]}
+{"kind":"shape","id":"sh/2x83ih8n","slide":5,"bbox":[730,266,100,30]}
+{"kind":"textbox","id":"sh/3yhkbmps","slide":5,"text":"EJEMPLO","textPreview":"EJEMPLO","textChars":7,"textLines":1,"bbox":[742,270,76,22]}
+{"kind":"textbox","id":"sh/je1wjy9w","slide":5,"text":"Sin contrato","textPreview":"Sin contrato","textChars":12,"textLines":1,"bbox":[730,326,170,28]}
+{"kind":"textbox","id":"sh/idsvqd8b","slide":5,"text":"“12 meses”","textPreview":"“12 meses”","textChars":10,"textLines":1,"bbox":[730,360,170,50]}
+{"kind":"shape","id":"sh/5gjel8r2","slide":5,"bbox":[915,379,55,0]}
+{"kind":"textbox","id":"sh/4fads3qh","slide":5,"text":"Con contrato","textPreview":"Con contrato","textChars":12,"textLines":1,"bbox":[990,326,160,28]}
+{"kind":"textbox","id":"sh/vahcfy90","slide":5,"text":"“24 meses”","textPreview":"“24 meses”","textChars":10,"textLines":1,"bbox":[970,360,180,50]}
+{"kind":"textbox","id":"sh/u98vmt8f","slide":5,"text":"P(“24” | X,C)  >  P(“12” | X,C)","textPreview":"P(“24” | X,C)  >  P(“12” | X,C)","textChars":31,"textLines":1,"bbox":[730,450,400,44]}
+{"kind":"textbox","id":"sh/hcjeh8rq","slide":5,"text":"Fuente: context.md — generación condicional y ejemplo de garantía","textPreview":"Fuente: context.md — generación condicional y ejemplo de garantía","textChars":65,"textLines":1,"bbox":[72,678,1045,20]}
+{"kind":"textbox","id":"sh/wbado3ql","slide":5,"text":"05","textPreview":"05","textChars":2,"textLines":1,"bbox":[1160,676,48,22]}
+{"kind":"notes","id":"nt/1ubg2x","slide":5,"text":""}
+{"kind":"slide","id":"sl/njffbn","slide":6,"title":"06  /  TEORÍA DE LA INFORMACIÓN","textShapes":12}
+{"kind":"textbox","id":"sh/mx0bedwv","slide":6,"text":"06  /  TEORÍA DE LA INFORMACIÓN","textPreview":"06  /  TEORÍA DE LA INFORMACIÓN","textChars":31,"textLines":1,"bbox":[72,38,430,22]}
+{"kind":"textbox","id":"sh/t0rup8fm","slide":6,"text":"El valor del contexto es la incertidumbre que logra eliminar","textPreview":"El valor del contexto es la incertidumbre que logra eliminar","textChars":60,"textLines":1,"bbox":[72,72,1136,70]}
+{"kind":"shape","id":"sh/8zitg3e1","slide":6,"bbox":[72,156,1136,0]}
+{"kind":"textbox","id":"sh/zu9sjyx4","slide":6,"text":"H(Y | X, C)  ≤  H(Y | X)","textPreview":"H(Y | X, C)  ≤  H(Y | X)","textChars":24,"textLines":1,"bbox":[72,206,620,74]}
+{"kind":"textbox","id":"sh/y9gbatwz","slide":6,"text":"I(Y; C | X) = H(Y | X) − H(Y | X, C)","textPreview":"I(Y; C | X) = H(Y | X) − H(Y | X, C)","textChars":36,"textLines":1,"bbox":[72,302,730,62]}
+{"kind":"textbox","id":"sh/lwral8fa","slide":6,"text":"Información mutua condicional = beneficio potencial del contexto","textPreview":"Información mutua condicional = beneficio potencial del contexto","textChars":64,"textLines":1,"bbox":[72,386,640,42]}
+{"kind":"textbox","id":"sh/kvitc3ep","slide":6,"text":"Sin contexto","textPreview":"Sin contexto","textChars":12,"textLines":1,"bbox":[780,198,220,28]}
+{"kind":"shape","id":"sh/b6psfex8","slide":6,"bbox":[780,238,340,58]}
+{"kind":"shape","id":"sh/a5gb69wn","slide":6,"bbox":[780,238,305,58]}
+{"kind":"textbox","id":"sh/kva98zmp","slide":6,"text":"H alta","textPreview":"H alta","textChars":6,"textLines":1,"bbox":[930,253,120,24]}
+{"kind":"textbox","id":"sh/lwjah43a","slide":6,"text":"Con contexto relevante","textPreview":"Con contexto relevante","textChars":22,"textLines":1,"bbox":[780,326,270,28]}
+{"kind":"shape","id":"sh/ytsr694j","slide":6,"bbox":[780,366,340,58]}
+{"kind":"shape","id":"sh/zu1sful4","slide":6,"bbox":[780,366,112,58]}
+{"kind":"textbox","id":"sh/c7a94zmd","slide":6,"text":"H baja","textPreview":"H baja","textChars":6,"textLines":1,"bbox":[786,381,100,24]}
+{"kind":"textbox","id":"sh/x8jqd43y","slide":6,"text":"La diferencia es información que C aporta sobre Y.","textPreview":"La diferencia es información que C aporta sobre Y.","textChars":50,"textLines":1,"bbox":[780,456,370,60]}
+{"kind":"textbox","id":"sh/a58r2p4n","slide":6,"text":"Fuente: context.md — entropía e información mutua condicional","textPreview":"Fuente: context.md — entropía e información mutua condicional","textChars":61,"textLines":1,"bbox":[72,678,1045,20]}
+{"kind":"textbox","id":"sh/b6h8buls","slide":6,"text":"06","textPreview":"06","textChars":2,"textLines":1,"bbox":[1160,676,48,22]}
+{"kind":"notes","id":"nt/njffbn","slide":6,"text":""}
+{"kind":"slide","id":"sl/01skzx","slide":7,"title":"07  /  LA REALIDAD DEL MODELO","textShapes":16}
+{"kind":"textbox","id":"sh/fyhknu18","slide":7,"text":"07  /  LA REALIDAD DEL MODELO","textPreview":"07  /  LA REALIDAD DEL MODELO","textChars":29,"textLines":1,"bbox":[72,38,430,22]}
+{"kind":"textbox","id":"sh/0zqlgz2t","slide":7,"text":"En un LLM real, el contexto también puede degradar la respuesta","textPreview":"En un LLM real, el contexto también puede degradar la respuesta","textChars":63,"textLines":1,"bbox":[72,72,1136,116]}
+{"kind":"shape","id":"sh/10z2p4je","slide":7,"bbox":[72,196,1136,0]}
+{"kind":"textbox","id":"sh/qto3apkr","slide":7,"text":"Q(C) ≈ R(C) − N(C) − D(C) − K(C)","textPreview":"Q(C) ≈ R(C) − N(C) − D(C) − K(C)","textChars":32,"textLines":1,"bbox":[72,242,690,66]}
+{"kind":"shape","id":"sh/ruxkja1c","slide":7,"bbox":[72,339,52,52]}
+{"kind":"textbox","id":"sh/svqlcf2x","slide":7,"text":"R","textPreview":"R","textChars":1,"textLines":1,"bbox":[72,351,52,25]}
+{"kind":"textbox","id":"sh/dwz2lkji","slide":7,"text":"relevancia","textPreview":"relevancia","textChars":10,"textLines":1,"bbox":[136,352,120,24]}
+{"kind":"shape","id":"sh/aps3m90v","slide":7,"bbox":[242,339,52,52]}
+{"kind":"textbox","id":"sh/bq14ve1g","slide":7,"text":"N","textPreview":"N","textChars":1,"textLines":1,"bbox":[242,351,52,25]}
+{"kind":"textbox","id":"sh/ze1wj2hs","slide":7,"text":"ruido","textPreview":"ruido","textChars":5,"textLines":1,"bbox":[306,352,120,24]}
+{"kind":"shape","id":"sh/ydsvqxgn","slide":7,"bbox":[412,339,52,52]}
+{"kind":"textbox","id":"sh/lg3elczy","slide":7,"text":"D","textPreview":"D","textChars":1,"textLines":1,"bbox":[412,351,52,25]}
+{"kind":"textbox","id":"sh/kfads7yd","slide":7,"text":"dificultad","textPreview":"dificultad","textChars":10,"textLines":1,"bbox":[476,352,120,24]}
+{"kind":"shape","id":"sh/7ilwnmh4","slide":7,"bbox":[582,339,52,52]}
+{"kind":"textbox","id":"sh/mhcvuhgj","slide":7,"text":"K","textPreview":"K","textChars":1,"textLines":1,"bbox":[582,351,52,25]}
+{"kind":"textbox","id":"sh/9k3epcza","slide":7,"text":"conflictos","textPreview":"conflictos","textChars":10,"textLines":1,"bbox":[646,352,120,24]}
+{"kind":"textbox","id":"sh/8judwryp","slide":7,"text":"Q(n + 1)  ≱  Q(n)","textPreview":"Q(n + 1)  ≱  Q(n)","textChars":17,"textLines":1,"bbox":[72,444,340,54]}
+{"kind":"shape","id":"sh/v6lwrmx0","slide":7,"bbox":[760,524,400,0]}
+{"kind":"shape","id":"sh/ulcfyhgv","slide":7,"bbox":[760,284,0,240]}
+{"kind":"shape","id":"sh/q1gzql03","slide":7,"bbox":[760,484,60,-54]}
+{"kind":"shape","id":"sh/r2pgjq18","slide":7,"bbox":[820,430,60,-56]}
+{"kind":"shape","id":"sh/s3yhsvit","slide":7,"bbox":[880,374,60,-38]}
+{"kind":"shape","id":"sh/d47yl0je","slide":7,"bbox":[940,336,60,14]}
+{"kind":"shape","id":"sh/idwzml0r","slide":7,"bbox":[1000,350,60,44]}
+{"kind":"shape","id":"sh/3e5gfq1c","slide":7,"bbox":[1060,394,60,54]}
+{"kind":"shape","id":"sh/4fyhovix","slide":7,"bbox":[1120,448,40,26]}
+{"kind":"shape","id":"sh/507yhgji","slide":7,"bbox":[922,322,36,36]}
+{"kind":"textbox","id":"sh/290zy50v","slide":7,"text":"zona útil","textPreview":"zona útil","textChars":9,"textLines":1,"bbox":[870,284,140,28]}
+{"kind":"textbox","id":"sh/na90rahg","slide":7,"text":"tokens de contexto →","textPreview":"tokens de contexto →","textChars":20,"textLines":1,"bbox":[905,542,250,28]}
+{"kind":"textbox","id":"sh/xgvad87u","slide":7,"text":"Fuente: context.md — modelo conceptual de calidad, ruido y longitud","textPreview":"Fuente: context.md — modelo conceptual de calidad, ruido y longitud","textChars":67,"textLines":1,"bbox":[72,678,1045,20]}
+{"kind":"textbox","id":"sh/wfmt4369","slide":7,"text":"07","textPreview":"07","textChars":2,"textLines":1,"bbox":[1160,676,48,22]}
+{"kind":"notes","id":"nt/01skzx","slide":7,"text":""}
+{"kind":"slide","id":"sl/38l7uo","slide":8,"title":"08  /  ATENCIÓN Y RECUPERACIÓN INTERNA","textShapes":13}
+{"kind":"textbox","id":"sh/or2p8j6h","slide":8,"text":"08  /  ATENCIÓN Y RECUPERACIÓN INTERNA","textPreview":"08  /  ATENCIÓN Y RECUPERACIÓN INTERNA","textChars":38,"textLines":1,"bbox":[72,38,430,22]}
+{"kind":"textbox","id":"sh/3qtozypw","slide":8,"text":"La evidencia puede estar en el prompt y aun así no ser utilizada","textPreview":"La evidencia puede estar en el prompt y aun así no ser utilizada","textChars":64,"textLines":1,"bbox":[72,72,1136,70]}
+{"kind":"shape","id":"sh/2pk76tob","slide":8,"bbox":[72,156,1136,0]}
+{"kind":"textbox","id":"sh/1ob6xo7q","slide":8,"text":"Attention(Q,K,V) = softmax(QKᵀ / √dₖ)V","textPreview":"Attention(Q,K,V) = softmax(QKᵀ / √dₖ)V","textChars":38,"textLines":1,"bbox":[72,202,720,62]}
+{"kind":"textbox","id":"sh/gn2p4j6l","slide":8,"text":"Cada token compite por atención. El desafío no es solo leer: es localizar, integrar y responder.","textPreview":"Cada token compite por atención. El desafío no es solo leer: es localizar, integrar y responder.","textChars":96,"textLines":1,"bbox":[72,280,700,64]}
+{"kind":"shape","id":"sh/fmtovep0","slide":8,"bbox":[772,218,34,34]}
+{"kind":"shape","id":"sh/e1k729of","slide":8,"bbox":[828,218,34,34]}
+{"kind":"shape","id":"sh/lkfq98na","slide":8,"bbox":[884,218,34,34]}
+{"kind":"shape","id":"sh/0jmpgn6p","slide":8,"bbox":[940,218,34,34]}
+{"kind":"shape","id":"sh/y50nihg3","slide":8,"bbox":[996,218,34,34]}
+{"kind":"shape","id":"sh/z6tobmxo","slide":8,"bbox":[1052,218,34,34]}
+{"kind":"shape","id":"sh/k72pkryt","slide":8,"bbox":[1108,218,34,34]}
+{"kind":"shape","id":"sh/l8b6dwfe","slide":8,"bbox":[772,280,34,34]}
+{"kind":"shape","id":"sh/q10nehgr","slide":8,"bbox":[828,280,34,34]}
+{"kind":"shape","id":"sh/b29o7mxc","slide":8,"bbox":[884,280,34,34]}
+{"kind":"shape","id":"sh/c3i5g7yx","slide":8,"bbox":[940,280,34,34]}
+{"kind":"shape","id":"sh/x4r69cfi","slide":8,"bbox":[996,280,34,34]}
+{"kind":"shape","id":"sh/uxk7q1wb","slide":8,"bbox":[1052,280,34,34]}
+{"kind":"shape","id":"sh/vydoj6xg","slide":8,"bbox":[1108,280,34,34]}
+{"kind":"shape","id":"sh/76lcve9w","slide":8,"bbox":[772,342,34,34]}
+{"kind":"shape","id":"sh/65cbm9sb","slide":8,"bbox":[828,342,34,34]}
+{"kind":"shape","id":"sh/t83ux4r2","slide":8,"bbox":[884,342,34,34]}
+{"kind":"shape","id":"sh/s7udojah","slide":8,"bbox":[940,342,34,34]}
+{"kind":"shape","id":"sh/fu5cze9s","slide":8,"bbox":[996,342,34,34]}
+{"kind":"shape","id":"sh/u9cvq9s7","slide":8,"bbox":[1052,342,34,34]}
+{"kind":"shape","id":"sh/hwnu1ory","slide":8,"bbox":[1108,342,34,34]}
+{"kind":"shape","id":"sh/gvedsjqd","slide":8,"bbox":[1020,454,170,66]}
+{"kind":"textbox","id":"sh/3y5c3y94","slide":8,"text":"respuesta","textPreview":"respuesta","textChars":9,"textLines":1,"bbox":[1020,472,170,28]}
+{"kind":"shape","id":"sh/2xwvut8j","slide":8,"bbox":[957,314,63,172]}
+{"kind":"shape","id":"sh/03ytk36h","slide":8,"bbox":[789,235,231,251]}
+{"kind":"shape","id":"sh/147ud872","slide":8,"bbox":[1125,359,-105,127]}
+{"kind":"textbox","id":"sh/e1gbitor","slide":8,"text":"01","textPreview":"01","textChars":2,"textLines":1,"bbox":[72,426,38,24]}
+{"kind":"textbox","id":"sh/z2pcbypc","slide":8,"text":"identificar","textPreview":"identificar","textChars":11,"textLines":1,"bbox":[72,456,170,32]}
+{"kind":"textbox","id":"sh/czetgj6l","slide":8,"text":"02","textPreview":"02","textChars":2,"textLines":1,"bbox":[277,426,38,24]}
+{"kind":"textbox","id":"sh/d0nu9o76","slide":8,"text":"integrar","textPreview":"integrar","textChars":8,"textLines":1,"bbox":[277,456,170,32]}
+{"kind":"textbox","id":"sh/qxwbe9of","slide":8,"text":"03","textPreview":"03","textChars":2,"textLines":1,"bbox":[482,426,38,24]}
+{"kind":"textbox","id":"sh/ry5s7ep0","slide":8,"text":"generar","textPreview":"generar","textChars":7,"textLines":1,"bbox":[482,456,170,32]}
+{"kind":"textbox","id":"sh/4betcj6p","slide":8,"text":"Fuente: context.md — atención y recuperación interna","textPreview":"Fuente: context.md — atención y recuperación interna","textChars":52,"textLines":1,"bbox":[72,678,1045,20]}
+{"kind":"textbox","id":"sh/pwna5o7u","slide":8,"text":"08","textPreview":"08","textChars":2,"textLines":1,"bbox":[1160,676,48,22]}
+{"kind":"notes","id":"nt/38l7uo","slide":8,"text":""}
+{"kind":"slide","id":"sl/hzu6h4","slide":9,"title":"09  /  SIMILITUD CON RAG","textShapes":14}
+{"kind":"textbox","id":"sh/lk7it4v6","slide":9,"text":"09  /  SIMILITUD CON RAG","textPreview":"09  /  SIMILITUD CON RAG","textChars":24,"textLines":1,"bbox":[72,38,430,22]}
+{"kind":"textbox","id":"sh/yhwji9wv","slide":9,"text":"La calidad end-to-end multiplica dos probabilidades","textPreview":"La calidad end-to-end multiplica dos probabilidades","textChars":51,"textLines":1,"bbox":[72,72,1136,116]}
+{"kind":"shape","id":"sh/zi50rex0","slide":9,"bbox":[72,196,1136,0]}
+{"kind":"textbox","id":"sh/cfe1gzep","slide":9,"text":"P(correcta) ≈ P(recuperar evidencia) × P(responder | evidencia)","textPreview":"P(correcta) ≈ P(recuperar evidencia) × P(responder | evidencia)","textChars":63,"textLines":1,"bbox":[72,238,1136,62]}
+{"kind":"shape","id":"sh/xgnip4fa","slide":9,"bbox":[350,424,170,0]}
+{"kind":"shape","id":"sh/adwjepwj","slide":9,"bbox":[760,424,170,0]}
+{"kind":"shape","id":"sh/be50nux4","slide":9,"bbox":[130,354,220,140]}
+{"kind":"shape","id":"sh/obu1cfed","slide":9,"bbox":[520,354,240,140]}
+{"kind":"shape","id":"sh/pc3ilkfy","slide":9,"bbox":[930,354,220,140]}
+{"kind":"textbox","id":"sh/hc321836","slide":9,"text":"RETRIEVER","textPreview":"RETRIEVER","textChars":9,"textLines":1,"bbox":[130,378,220,22]}
+{"kind":"textbox","id":"sh/gbuls32l","slide":9,"text":"0.80","textPreview":"0.80","textChars":4,"textLines":1,"bbox":[130,412,220,54]}
+{"kind":"textbox","id":"sh/falkzyl0","slide":9,"text":"GENERATOR","textPreview":"GENERATOR","textChars":9,"textLines":1,"bbox":[520,378,240,22]}
+{"kind":"textbox","id":"sh/u9c3qtkf","slide":9,"text":"0.90","textPreview":"0.90","textChars":4,"textLines":1,"bbox":[520,412,240,54]}
+{"kind":"textbox","id":"sh/t832xo3u","slide":9,"text":"SISTEMA","textPreview":"SISTEMA","textChars":7,"textLines":1,"bbox":[930,378,220,22]}
+{"kind":"textbox","id":"sh/s7uloj29","slide":9,"text":"0.72","textPreview":"0.72","textChars":4,"textLines":1,"bbox":[930,412,220,54]}
+{"kind":"textbox","id":"sh/7m1kvel4","slide":9,"text":"×","textPreview":"×","textChars":1,"textLines":1,"bbox":[415,401,50,50]}
+{"kind":"textbox","id":"sh/6ls3mtkj","slide":9,"text":"=","textPreview":"=","textChars":1,"textLines":1,"bbox":[830,401,50,50]}
+{"kind":"textbox","id":"sh/5kj2to3y","slide":9,"text":"Muchos “errores de generación” comienzan antes: en la selección del contexto.","textPreview":"Muchos “errores de generación” comienzan antes: en la selección del contexto.","textChars":77,"textLines":1,"bbox":[220,544,840,56]}
+{"kind":"textbox","id":"sh/kjalkj2d","slide":9,"text":"Fuente: context.md — descomposición probabilística de un pipeline RAG","textPreview":"Fuente: context.md — descomposición probabilística de un pipeline RAG","textChars":69,"textLines":1,"bbox":[72,678,1045,20]}
+{"kind":"textbox","id":"sh/wnelgju9","slide":9,"text":"09","textPreview":"09","textChars":2,"textLines":1,"bbox":[1160,676,48,22]}
+{"kind":"notes","id":"nt/hzu6h4","slide":9,"text":""}
+{"kind":"slide","id":"sl/j34z43","slide":10,"title":"CAMBIO DE RÉGIMEN","textShapes":6}
+{"kind":"shape","id":"sh/654fup0n","slide":10,"bbox":[72,70,180,30]}
+{"kind":"textbox","id":"sh/tsvy5kje","slide":10,"text":"CAMBIO DE RÉGIMEN","textPreview":"CAMBIO DE RÉGIMEN","textChars":17,"textLines":1,"bbox":[84,74,156,22]}
+{"kind":"textbox","id":"sh/s7mxwfit","slide":10,"text":"Hasta aquí, asumimos que X tenía un solo significado.","textPreview":"Hasta aquí, asumimos que X tenía un solo significado.","textChars":53,"textLines":1,"bbox":[72,180,1040,112]}
+{"kind":"shape","id":"sh/j2dwza1w","slide":10,"bbox":[72,340,488,0]}
+{"kind":"textbox","id":"sh/i1kfq50r","slide":10,"text":"Con una query ambigua, el sistema debe inferir primero qué quiso decir el usuario.","textPreview":"Con una query ambigua, el sistema debe inferir primero qué quiso decir el usuario.","textChars":82,"textLines":1,"bbox":[72,390,1040,116]}
+{"kind":"textbox","id":"sh/54ve1kj2","slide":10,"text":"Ahora aparece una variable latente:  Z = intención real.","textPreview":"Ahora aparece una variable latente:  Z = intención real.","textChars":56,"textLines":1,"bbox":[72,560,760,48]}
+{"kind":"textbox","id":"sh/43mxsfih","slide":10,"text":"Fuente: context.md — transición al modelamiento con intención latente","textPreview":"Fuente: context.md — transición al modelamiento con intención latente","textChars":69,"textLines":1,"bbox":[72,678,1045,20]}
+{"kind":"textbox","id":"sh/vytwva10","slide":10,"text":"10","textPreview":"10","textChars":2,"textLines":1,"bbox":[1160,676,48,22]}
+{"kind":"notes","id":"nt/j34z43","slide":10,"text":""}
+{"kind":"slide","id":"sl/2hj0x9","slide":11,"title":"11  /  INTENCIÓN LATENTE","textShapes":16}
+{"kind":"textbox","id":"sh/n6hk3u14","slide":11,"text":"11  /  INTENCIÓN LATENTE","textPreview":"11  /  INTENCIÓN LATENTE","textChars":24,"textLines":1,"bbox":[72,38,430,22]}
+{"kind":"textbox","id":"sh/87qlwzi9","slide":11,"text":"La respuesta se convierte en una mezcla de interpretaciones","textPreview":"La respuesta se convierte en una mezcla de interpretaciones","textChars":59,"textLines":1,"bbox":[72,72,1136,116]}
+{"kind":"shape","id":"sh/98z25kju","slide":11,"bbox":[72,196,1136,0]}
+{"kind":"textbox","id":"sh/y1oj65k7","slide":11,"text":"P(Y | X,C) = Σz P(Y | X,C,Z=z) · P(Z=z | X,C)","textPreview":"P(Y | X,C) = Σz P(Y | X,C,Z=z) · P(Z=z | X,C)","textChars":45,"textLines":1,"bbox":[72,238,1136,70]}
+{"kind":"shape","id":"sh/z2xkza1s","slide":11,"bbox":[72,344,380,176]}
+{"kind":"textbox","id":"sh/03618fid","slide":11,"text":"“¿Cómo funciona la memoria?”","textPreview":"“¿Cómo funciona la memoria?”","textChars":28,"textLines":1,"bbox":[98,380,328,74]}
+{"kind":"textbox","id":"sh/l4f21kjy","slide":11,"text":"X","textPreview":"X","textChars":1,"textLines":1,"bbox":[224,471,76,28]}
+{"kind":"shape","id":"sh/qd4j25kb","slide":11,"bbox":[560,340,228,82]}
+{"kind":"textbox","id":"sh/bedkva1w","slide":11,"text":"conversacional","textPreview":"conversacional","textChars":14,"textLines":1,"bbox":[576,354,160,48]}
+{"kind":"textbox","id":"sh/fi9wnyh4","slide":11,"text":"40%","textPreview":"40%","textChars":3,"textLines":1,"bbox":[734,365,40,24]}
+{"kind":"shape","id":"sh/uh0vet0j","slide":11,"bbox":[820,340,228,82]}
+{"kind":"textbox","id":"sh/14rep8za","slide":11,"text":"persistente","textPreview":"persistente","textChars":11,"textLines":1,"bbox":[836,354,160,48]}
+{"kind":"textbox","id":"sh/g3idg3ip","slide":11,"text":"35%","textPreview":"35%","textChars":3,"textLines":1,"bbox":[994,365,40,24]}
+{"kind":"shape","id":"sh/36twrihg","slide":11,"bbox":[560,456,228,82]}
+{"kind":"textbox","id":"sh/250vid0v","slide":11,"text":"ventana de contexto","textPreview":"ventana de contexto","textChars":19,"textLines":1,"bbox":[576,470,160,48]}
+{"kind":"textbox","id":"sh/p8betsz6","slide":11,"text":"15%","textPreview":"15%","textChars":3,"textLines":1,"bbox":[734,481,40,24]}
+{"kind":"shape","id":"sh/o72dkni1","slide":11,"bbox":[820,456,228,82]}
+{"kind":"textbox","id":"sh/japcfehw","slide":11,"text":"framework específico","textPreview":"framework específico","textChars":20,"textLines":1,"bbox":[836,470,160,48]}
+{"kind":"textbox","id":"sh/i9gv690r","slide":11,"text":"10%","textPreview":"10%","textChars":3,"textLines":1,"bbox":[994,481,40,24]}
+{"kind":"textbox","id":"sh/m5ozehkz","slide":11,"text":"Varias secuencias son plausibles; una respuesta fluida puede elegir el modo equivocado.","textPreview":"Varias secuencias son plausibles; una respuesta fluida puede elegir el modo equivocado.","textChars":87,"textLines":1,"bbox":[145,566,990,58]}
+{"kind":"textbox","id":"sh/n6xgnm1k","slide":11,"text":"Fuente: context.md — distribución mezclada sobre intenciones Z","textPreview":"Fuente: context.md — distribución mezclada sobre intenciones Z","textChars":62,"textLines":1,"bbox":[72,678,1045,20]}
+{"kind":"textbox","id":"sh/876hgr25","slide":11,"text":"11","textPreview":"11","textChars":2,"textLines":1,"bbox":[1160,676,48,22]}
+{"kind":"notes","id":"nt/2hj0x9","slide":11,"text":""}
+{"kind":"slide","id":"sl/mn1r6c","slide":12,"title":"12  /  PROPAGACIÓN DE INCERTIDUMBRE","textShapes":17}
+{"kind":"textbox","id":"sh/zaxwzyxo","slide":12,"text":"12  /  PROPAGACIÓN DE INCERTIDUMBRE","textPreview":"12  /  PROPAGACIÓN DE INCERTIDUMBRE","textChars":35,"textLines":1,"bbox":[72,38,430,22]}
+{"kind":"textbox","id":"sh/kb6x83y9","slide":12,"text":"La ambigüedad de intención contamina la respuesta","textPreview":"La ambigüedad de intención contamina la respuesta","textChars":49,"textLines":1,"bbox":[72,72,1136,70]}
+{"kind":"shape","id":"sh/lcfe18fu","slide":12,"bbox":[72,156,1136,0]}
+{"kind":"textbox","id":"sh/mdofadgz","slide":12,"text":"H(Z | X)  ↑","textPreview":"H(Z | X)  ↑","textChars":11,"textLines":1,"bbox":[88,238,300,76]}
+{"kind":"textbox","id":"sh/7exw3ixk","slide":12,"text":"⇒","textPreview":"⇒","textChars":1,"textLines":1,"bbox":[425,242,80,70]}
+{"kind":"textbox","id":"sh/8fqxcne5","slide":12,"text":"H(Y | X,C)  ↑","textPreview":"H(Y | X,C)  ↑","textChars":13,"textLines":1,"bbox":[540,238,390,76]}
+{"kind":"textbox","id":"sh/9gze5sfq","slide":12,"text":"⇒","textPreview":"⇒","textChars":1,"textLines":1,"bbox":[955,242,80,70]}
+{"kind":"textbox","id":"sh/2h4vy9gv","slide":12,"text":"riesgo  ↑","textPreview":"riesgo  ↑","textChars":9,"textLines":1,"bbox":[1040,238,170,76]}
+{"kind":"textbox","id":"sh/nidwrexg","slide":12,"text":"Z₁","textPreview":"Z₁","textChars":2,"textLines":1,"bbox":[235,381,80,28]}
+{"kind":"shape","id":"sh/7itgfe9w","slide":12,"bbox":[235,418,80,124]}
+{"kind":"textbox","id":"sh/6hkf69sb","slide":12,"text":"40%","textPreview":"40%","textChars":3,"textLines":1,"bbox":[235,552,80,28]}
+{"kind":"textbox","id":"sh/tkvyh4rm","slide":12,"text":"Z₂","textPreview":"Z₂","textChars":2,"textLines":1,"bbox":[405,381,80,28]}
+{"kind":"shape","id":"sh/8j2x8jah","slide":12,"bbox":[405,418,80,108.5]}
+{"kind":"textbox","id":"sh/jetgbutk","slide":12,"text":"35%","textPreview":"35%","textChars":3,"textLines":1,"bbox":[405,536.5,80,28]}
+{"kind":"textbox","id":"sh/ytkf2psz","slide":12,"text":"Z₃","textPreview":"Z₃","textChars":2,"textLines":1,"bbox":[575,381,80,28]}
+{"kind":"shape","id":"sh/lgbyd4rq","slide":12,"bbox":[575,418,80,77.5]}
+{"kind":"textbox","id":"sh/kf2x4za5","slide":12,"text":"25%","textPreview":"25%","textChars":3,"textLines":1,"bbox":[575,505.5,80,28]}
+{"kind":"textbox","id":"sh/bq9g7uto","slide":12,"text":"multimodal","textPreview":"multimodal","textChars":10,"textLines":1,"bbox":[725,406,330,48]}
+{"kind":"textbox","id":"sh/ap0fyps3","slide":12,"text":"El modelo no está “confundido”: está promediando respuestas válidas bajo intenciones diferentes.","textPreview":"El modelo no está “confundido”: está promediando respuestas válidas bajo intenciones diferentes.","textChars":96,"textLines":1,"bbox":[725,466,410,112]}
+{"kind":"textbox","id":"sh/el0zapcv","slide":12,"text":"Fuente: context.md — entropía de intención y multimodalidad","textPreview":"Fuente: context.md — entropía de intención y multimodalidad","textChars":59,"textLines":1,"bbox":[72,678,1045,20]}
+{"kind":"textbox","id":"sh/zm9gjudg","slide":12,"text":"12","textPreview":"12","textChars":2,"textLines":1,"bbox":[1160,676,48,22]}
+{"kind":"notes","id":"nt/mn1r6c","slide":12,"text":""}
+{"kind":"slide","id":"sl/gr0s9d","slide":13,"title":"13  /  RECUPERACIÓN SEMÁNTICA","textShapes":10}
+{"kind":"textbox","id":"sh/xgru9832","slide":13,"text":"13  /  RECUPERACIÓN SEMÁNTICA","textPreview":"13  /  RECUPERACIÓN SEMÁNTICA","textChars":29,"textLines":1,"bbox":[72,38,430,22]}
+{"kind":"textbox","id":"sh/at0bedkb","slide":13,"text":"Una query ambigua queda entre clústeres y reduce el margen","textPreview":"Una query ambigua queda entre clústeres y reduce el margen","textChars":58,"textLines":1,"bbox":[72,72,1136,70]}
+{"kind":"shape","id":"sh/bu9c7ilw","slide":13,"bbox":[72,156,1136,0]}
+{"kind":"textbox","id":"sh/oritc325","slide":13,"text":"eX ≈ Σz P(Z=z | X) · eX,z","textPreview":"eX ≈ Σz P(Z=z | X) · eX,z","textChars":25,"textLines":1,"bbox":[72,196,520,58]}
+{"kind":"textbox","id":"sh/psru583q","slide":13,"text":"Δ = s(Ccorrecto,X) − s(Cincorrecto,X) ≈ 0","textPreview":"Δ = s(Ccorrecto,X) − s(Cincorrecto,X) ≈ 0","textChars":41,"textLines":1,"bbox":[72,264,590,56]}
+{"kind":"textbox","id":"sh/2pgbatkf","slide":13,"text":"El retriever devuelve evidencia de varios sentidos; el ranking se vuelve inestable.","textPreview":"El retriever devuelve evidencia de varios sentidos; el ranking se vuelve inestable.","textChars":83,"textLines":1,"bbox":[72,350,520,90]}
+{"kind":"shape","id":"sh/nq9c3ylk","slide":13,"bbox":[680,184,478,340]}
+{"kind":"shape","id":"sh/0nyt8329","slide":13,"bbox":[745,272,18,18]}
+{"kind":"shape","id":"sh/1o7u1o3u","slide":13,"bbox":[778,242,18,18]}
+{"kind":"shape","id":"sh/dsrupo36","slide":13,"bbox":[805,292,18,18]}
+{"kind":"shape","id":"sh/c7ytgj2l","slide":13,"bbox":[830,254,18,18]}
+{"kind":"shape","id":"sh/r6pcnel0","slide":13,"bbox":[770,318,18,18]}
+{"kind":"shape","id":"sh/q5gbe9kf","slide":13,"bbox":[850,306,18,18]}
+{"kind":"shape","id":"sh/p47ul43u","slide":13,"bbox":[1010,386,18,18]}
+{"kind":"shape","id":"sh/43ytcz2p","slide":13,"bbox":[1042,352,18,18]}
+{"kind":"shape","id":"sh/32pcjul4","slide":13,"bbox":[1080,394,18,18]}
+{"kind":"shape","id":"sh/21gba9kj","slide":13,"bbox":[1110,360,18,18]}
+{"kind":"shape","id":"sh/h07uh43y","slide":13,"bbox":[1062,426,18,18]}
+{"kind":"shape","id":"sh/gzet8z2d","slide":13,"bbox":[1130,414,18,18]}
+{"kind":"shape","id":"sh/8jitoza9","slide":13,"bbox":[930,332,40,40]}
+{"kind":"textbox","id":"sh/tkrux4bu","slide":13,"text":"eX","textPreview":"eX","textChars":2,"textLines":1,"bbox":[930,342,40,20]}
+{"kind":"shape","id":"sh/6h0bmps3","slide":13,"bbox":[950,352,-130,-59]}
+{"kind":"shape","id":"sh/7i9cvuto","slide":13,"bbox":[950,352,106,50]}
+{"kind":"textbox","id":"sh/kfitkfad","slide":13,"text":"memoria del agente","textPreview":"memoria del agente","textChars":18,"textLines":1,"bbox":[714,461,190,30]}
+{"kind":"textbox","id":"sh/lgrutkbi","slide":13,"text":"memoria informática","textPreview":"memoria informática","textChars":19,"textLines":1,"bbox":[990,461,180,30]}
+{"kind":"textbox","id":"sh/ydgbipc7","slide":13,"text":"Fuente: context.md — embedding agregado y reducción del margen de similitud","textPreview":"Fuente: context.md — embedding agregado y reducción del margen de similitud","textChars":75,"textLines":1,"bbox":[72,678,1045,20]}
+{"kind":"textbox","id":"sh/je9cruts","slide":13,"text":"13","textPreview":"13","textChars":2,"textLines":1,"bbox":[1160,676,48,22]}
+{"kind":"notes","id":"nt/gr0s9d","slide":13,"text":""}
+{"kind":"slide","id":"sl/aa4erh","slide":14,"title":"14  /  RERANKING","textShapes":11}
+{"kind":"textbox","id":"sh/3atozu90","slide":14,"text":"14  /  RERANKING","textPreview":"14  /  RERANKING","textChars":16,"textLines":1,"bbox":[72,38,430,22]}
+{"kind":"textbox","id":"sh/4b2pszal","slide":14,"text":"Dos documentos casi empatados pueden representar intenciones opuestas","textPreview":"Dos documentos casi empatados pueden representar intenciones opuestas","textChars":69,"textLines":1,"bbox":[72,72,1136,70]}
+{"kind":"shape","id":"sh/5wbq14r6","slide":14,"bbox":[72,156,1136,0]}
+{"kind":"textbox","id":"sh/u507mpsj","slide":14,"text":"P(Z₁|X)=0.55   ·   P(Z₂|X)=0.45","textPreview":"P(Z₁|X)=0.55   ·   P(Z₂|X)=0.45","textChars":31,"textLines":1,"bbox":[72,200,1136,48]}
+{"kind":"shape","id":"sh/v69ovu94","slide":14,"bbox":[120,286,430,206]}
+{"kind":"shape","id":"sh/g72pozap","slide":14,"bbox":[730,286,430,206]}
+{"kind":"textbox","id":"sh/h8b6x4ru","slide":14,"text":"Chunk C₁ · intención Z₁","textPreview":"Chunk C₁ · intención Z₁","textChars":23,"textLines":1,"bbox":[150,314,370,34]}
+{"kind":"textbox","id":"sh/e147y9sn","slide":14,"text":"0.5400","textPreview":"0.5400","textChars":6,"textLines":1,"bbox":[150,360,370,72]}
+{"kind":"textbox","id":"sh/f2d8re98","slide":14,"text":"Chunk C₂ · intención Z₂","textPreview":"Chunk C₂ · intención Z₂","textChars":23,"textLines":1,"bbox":[760,314,370,34]}
+{"kind":"textbox","id":"sh/3m9cjm5s","slide":14,"text":"0.5375","textPreview":"0.5375","textChars":6,"textLines":1,"bbox":[760,360,370,72]}
+{"kind":"textbox","id":"sh/21gvaho7","slide":14,"text":"Δ = 0.0025","textPreview":"Δ = 0.0025","textChars":10,"textLines":1,"bbox":[555,356,170,46]}
+{"kind":"textbox","id":"sh/porulwny","slide":14,"text":"El reranker parece preciso, pero la intención sigue sin estar identificada.","textPreview":"El reranker parece preciso, pero la intención sigue sin estar identificada.","textChars":75,"textLines":1,"bbox":[170,528,940,56]}
+{"kind":"textbox","id":"sh/4nidcr6d","slide":14,"text":"Fuente: context.md — ejemplo numérico de scores marginalizados por intención","textPreview":"Fuente: context.md — ejemplo numérico de scores marginalizados por intención","textChars":76,"textLines":1,"bbox":[72,678,1045,20]}
+{"kind":"textbox","id":"sh/rq9wn65o","slide":14,"text":"14","textPreview":"14","textChars":2,"textLines":1,"bbox":[1160,676,48,22]}
+{"kind":"notes","id":"nt/aa4erh","slide":14,"text":""}
+{"kind":"slide","id":"sl/606y6d","slide":15,"title":"15  /  GENERACIÓN","textShapes":12}
+{"kind":"textbox","id":"sh/psvyx4fa","slide":15,"text":"15  /  GENERACIÓN","textPreview":"15  /  GENERACIÓN","textChars":17,"textLines":1,"bbox":[72,38,430,22]}
+{"kind":"textbox","id":"sh/2p4fmpwz","slide":15,"text":"Incluso documentos correctos pueden producir una respuesta incorrecta","textPreview":"Incluso documentos correctos pueden producir una respuesta incorrecta","textChars":69,"textLines":1,"bbox":[72,72,1136,70]}
+{"kind":"shape","id":"sh/3qdgvux4","slide":15,"bbox":[72,156,1136,0]}
+{"kind":"shape","id":"sh/gn2xkfet","slide":15,"bbox":[350,346,260,40]}
+{"kind":"shape","id":"sh/1obytkfe","slide":15,"bbox":[350,476,260,-60]}
+{"kind":"shape","id":"sh/elkfipwn","slide":15,"bbox":[850,401,200,0]}
+{"kind":"shape","id":"sh/fmtgrux8","slide":15,"bbox":[72,286,278,110]}
+{"kind":"shape","id":"sh/sj2xgfeh","slide":15,"bbox":[72,426,278,110]}
+{"kind":"textbox","id":"sh/tkbypkf2","slide":15,"text":"CZ₁ · válido","textPreview":"CZ₁ · válido","textChars":12,"textLines":1,"bbox":[96,308,230,30]}
+{"kind":"textbox","id":"sh/9kjip47a","slide":15,"text":"Evidencia para intención 1","textPreview":"Evidencia para intención 1","textChars":26,"textLines":1,"bbox":[96,346,230,32]}
+{"kind":"textbox","id":"sh/8ja1gzqp","slide":15,"text":"CZ₂ · válido","textPreview":"CZ₂ · válido","textChars":12,"textLines":1,"bbox":[96,448,230,30]}
+{"kind":"textbox","id":"sh/ni10nup4","slide":15,"text":"Evidencia para intención 2","textPreview":"Evidencia para intención 2","textChars":26,"textLines":1,"bbox":[96,486,230,32]}
+{"kind":"shape","id":"sh/mhsje98j","slide":15,"bbox":[610,326,240,160]}
+{"kind":"textbox","id":"sh/lgjil47y","slide":15,"text":"LLM","textPreview":"LLM","textChars":3,"textLines":1,"bbox":[610,346,240,32]}
+{"kind":"textbox","id":"sh/0fa1czqd","slide":15,"text":"elige · mezcla\ngeneraliza · alarga","textPreview":"elige · mezcla | generaliza · alarga","textChars":34,"textLines":2,"bbox":[640,394,180,64]}
+{"kind":"shape","id":"sh/ze10jup8","slide":15,"bbox":[1050,341,160,120]}
+{"kind":"textbox","id":"sh/yd8jap8n","slide":15,"text":"Y?","textPreview":"Y?","textChars":2,"textLines":1,"bbox":[1050,378,160,48]}
+{"kind":"textbox","id":"sh/dczihk72","slide":15,"text":"Los primeros tokens pueden fijar una interpretación sin nueva evidencia del usuario.","textPreview":"Los primeros tokens pueden fijar una interpretación sin nueva evidencia del usuario.","textChars":84,"textLines":1,"bbox":[145,574,990,54]}
+{"kind":"textbox","id":"sh/crq18fqh","slide":15,"text":"Fuente: context.md — contexto heterogéneo y auto-condicionamiento autoregresivo","textPreview":"Fuente: context.md — contexto heterogéneo y auto-condicionamiento autoregresivo","textChars":79,"textLines":1,"bbox":[72,678,1045,20]}
+{"kind":"textbox","id":"sh/4vu1ofyd","slide":15,"text":"15","textPreview":"15","textChars":2,"textLines":1,"bbox":[1160,676,48,22]}
+{"kind":"notes","id":"nt/606y6d","slide":15,"text":""}
+{"kind":"slide","id":"sl/usn0kj","slide":16,"title":"16  /  NO-IDENTIFICABILIDAD","textShapes":10}
+{"kind":"textbox","id":"sh/fax4v2hs","slide":16,"text":"16  /  NO-IDENTIFICABILIDAD","textPreview":"16  /  NO-IDENTIFICABILIDAD","textChars":27,"textLines":1,"bbox":[72,38,430,22]}
+{"kind":"textbox","id":"sh/gb654nid","slide":16,"text":"Cuando X no distingue Z, existe un error irreducible","textPreview":"Cuando X no distingue Z, existe un error irreducible","textChars":52,"textLines":1,"bbox":[72,72,1136,70]}
+{"kind":"shape","id":"sh/1cfmxszy","slide":16,"bbox":[72,156,1136,0]}
+{"kind":"textbox","id":"sh/6lonyd0b","slide":16,"text":"P(Z₁|X)=0.60","textPreview":"P(Z₁|X)=0.60","textChars":12,"textLines":1,"bbox":[120,220,300,54]}
+{"kind":"textbox","id":"sh/r6x4rihw","slide":16,"text":"P(Z₂|X)=0.40","textPreview":"P(Z₂|X)=0.40","textChars":12,"textLines":1,"bbox":[120,300,300,54]}
+{"kind":"shape","id":"sh/s7650nih","slide":16,"bbox":[500,208,620,230]}
+{"kind":"textbox","id":"sh/t8fmtsz2","slide":16,"text":"R* = 1 − maxz P(Z=z|X)","textPreview":"R* = 1 − maxz P(Z=z|X)","textChars":22,"textLines":1,"bbox":[550,246,520,60]}
+{"kind":"textbox","id":"sh/qh8nah0f","slide":16,"text":"= 40%","textPreview":"= 40%","textChars":5,"textLines":1,"bbox":[550,316,520,84]}
+{"kind":"textbox","id":"sh/b2ho3mh0","slide":16,"text":"No toda respuesta errónea ante una query ambigua es falta de capacidad del LLM.","textPreview":"No toda respuesta errónea ante una query ambigua es falta de capacidad del LLM.","textChars":79,"textLines":1,"bbox":[155,486,970,62]}
+{"kind":"textbox","id":"sh/36hcry14","slide":16,"text":"A veces el dato que falta no está en el contexto: está en la intención del usuario.","textPreview":"A veces el dato que falta no está en el contexto: está en la intención del usuario.","textChars":83,"textLines":1,"bbox":[235,568,810,54]}
+{"kind":"textbox","id":"sh/258bytkj","slide":16,"text":"Fuente: context.md — riesgo Bayesiano mínimo","textPreview":"Fuente: context.md — riesgo Bayesiano mínimo","textChars":44,"textLines":1,"bbox":[72,678,1045,20]}
+{"kind":"textbox","id":"sh/p8jut8ju","slide":16,"text":"16","textPreview":"16","textChars":2,"textLines":1,"bbox":[1160,676,48,22]}
+{"kind":"notes","id":"nt/usn0kj","slide":16,"text":""}
+{"kind":"slide","id":"sl/cseclt","slide":17,"title":"17  /  CLARIFICACIÓN","textShapes":7}
+{"kind":"textbox","id":"sh/kj2lcnqp","slide":17,"text":"17  /  CLARIFICACIÓN","textPreview":"17  /  CLARIFICACIÓN","textChars":20,"textLines":1,"bbox":[72,38,430,22]}
+{"kind":"textbox","id":"sh/jit4jip4","slide":17,"text":"Preguntar es una operación de reducción de entropía","textPreview":"Preguntar es una operación de reducción de entropía","textChars":51,"textLines":1,"bbox":[72,72,1136,116]}
+{"kind":"shape","id":"sh/ixk3ad8z","slide":17,"bbox":[72,196,1136,0]}
+{"kind":"shape","id":"sh/tovmps7m","slide":17,"bbox":[72,238,570,330]}
+{"kind":"textbox","id":"sh/7md4n2pg","slide":17,"text":"I(Z;A|X) = H(Z|X) − H(Z|X,A)","textPreview":"I(Z;A|X) = H(Z|X) − H(Z|X,A)","textChars":28,"textLines":1,"bbox":[690,250,490,62]}
+{"kind":"textbox","id":"sh/6l43ex8v","slide":17,"text":"A* = arg maxA I(Z;A|X)","textPreview":"A* = arg maxA I(Z;A|X)","textChars":22,"textLines":1,"bbox":[720,326,430,54]}
+{"kind":"shape","id":"sh/9sb2d872","slide":17,"bbox":[700,410,460,140]}
+{"kind":"textbox","id":"sh/8ril43qh","slide":17,"text":"“¿Te refieres a la ventana de contexto del LLM o a la memoria persistente del agente?”","textPreview":"“¿Te refieres a la ventana de contexto del LLM o a la memoria persistente del agente?”","textChars":86,"textLines":1,"bbox":[730,434,400,90]}
+{"kind":"textbox","id":"sh/2p0bi5oj","slide":17,"text":"Fuente: Clarify When Necessary (Zhang & Choi, 2023), Fig. 1; context.md","textPreview":"Fuente: Clarify When Necessary (Zhang & Choi, 2023), Fig. 1; context.md","textChars":71,"textLines":1,"bbox":[72,678,1045,20]}
+{"kind":"textbox","id":"sh/nq9sba54","slide":17,"text":"17","textPreview":"17","textChars":2,"textLines":1,"bbox":[1160,676,48,22]}
+{"kind":"image","id":"im/lovih43q","slide":17,"name":"","geometry":"roundRect","alt":"Framework de clarificación en tres pasos","bbox":[90,268,534,270]}
+{"kind":"notes","id":"nt/cseclt","slide":17,"text":""}
+{"kind":"slide","id":"sl/vzf33z","slide":18,"title":"18  /  POLÍTICA DE INTERACCIÓN","textShapes":12}
+{"kind":"textbox","id":"sh/gfy1sval","slide":18,"text":"18  /  POLÍTICA DE INTERACCIÓN","textPreview":"18  /  POLÍTICA DE INTERACCIÓN","textChars":30,"textLines":1,"bbox":[72,38,430,22]}
+{"kind":"textbox","id":"sh/fepkzq90","slide":18,"text":"Aclarar solo cuando el valor de la información supera su costo","textPreview":"Aclarar solo cuando el valor de la información supera su costo","textChars":62,"textLines":1,"bbox":[72,72,1136,70]}
+{"kind":"shape","id":"sh/edgjqlsv","slide":18,"bbox":[72,156,1136,0]}
+{"kind":"textbox","id":"sh/pkr250ri","slide":18,"text":"Raclarar  <  Rdirecto","textPreview":"Raclarar  <  Rdirecto","textChars":21,"textLines":1,"bbox":[72,200,1136,70]}
+{"kind":"shape","id":"sh/oji1wvax","slide":18,"bbox":[95,302,475,206]}
+{"kind":"shape","id":"sh/3i9k3a9c","slide":18,"bbox":[710,302,475,206]}
+{"kind":"shape","id":"sh/2hgju5sr","slide":18,"bbox":[125,326,120,30]}
+{"kind":"textbox","id":"sh/5onitgby","slide":18,"text":"RESPONDER","textPreview":"RESPONDER","textChars":9,"textLines":1,"bbox":[137,330,96,22]}
+{"kind":"textbox","id":"sh/kne1kbad","slide":18,"text":"Bajo riesgo\n+ intención dominante","textPreview":"Bajo riesgo | + intención dominante","textChars":33,"textLines":2,"bbox":[125,381,385,72]}
+{"kind":"textbox","id":"sh/qpcvu18r","slide":18,"text":"asumir y explicitar","textPreview":"asumir y explicitar","textChars":19,"textLines":1,"bbox":[125,468,385,30]}
+{"kind":"shape","id":"sh/rqlwn6pc","slide":18,"bbox":[740,326,110,30]}
+{"kind":"textbox","id":"sh/crudwbqx","slide":18,"text":"ACLARAR","textPreview":"ACLARAR","textChars":7,"textLines":1,"bbox":[752,330,86,22]}
+{"kind":"textbox","id":"sh/dsnepg7i","slide":18,"text":"Alto costo de error\n+ margen bajo","textPreview":"Alto costo de error | + margen bajo","textChars":33,"textLines":2,"bbox":[740,381,385,72]}
+{"kind":"textbox","id":"sh/etwvyl83","slide":18,"text":"preguntar antes de recuperar","textPreview":"preguntar antes de recuperar","textChars":28,"textLines":1,"bbox":[740,468,385,30]}
+{"kind":"textbox","id":"sh/zu5wrqp8","slide":18,"text":"{Costo de error}  ·  {Costo de interacción}  ·  {Umbral de ambigüedad}","textPreview":"{Costo de error}  ·  {Costo de interacción}  ·  {Umbral de ambigüedad}","textChars":70,"textLines":1,"bbox":[170,556,940,38]}
+{"kind":"textbox","id":"sh/0fed0v6t","slide":18,"text":"Fuente: context.md — decisión Bayesiana con costo de interacción","textPreview":"Fuente: context.md — decisión Bayesiana con costo de interacción","textChars":64,"textLines":1,"bbox":[72,678,1045,20]}
+{"kind":"textbox","id":"sh/1gnetg7e","slide":18,"text":"18","textPreview":"18","textChars":2,"textLines":1,"bbox":[1160,676,48,22]}
+{"kind":"notes","id":"nt/vzf33z","slide":18,"text":""}
+{"kind":"slide","id":"sl/2hwms9","slide":19,"title":"19  /  EVIDENCIA","textShapes":13}
+{"kind":"textbox","id":"sh/on2lsjqh","slide":19,"text":"19  /  EVIDENCIA","textPreview":"19  /  EVIDENCIA","textChars":16,"textLines":1,"bbox":[72,38,430,22]}
+{"kind":"textbox","id":"sh/nmtkje9w","slide":19,"text":"El contexto mejora la exactitud, pero no resuelve por sí solo la intención","textPreview":"El contexto mejora la exactitud, pero no resuelve por sí solo la intención","textChars":74,"textLines":1,"bbox":[72,72,1136,116]}
+{"kind":"shape","id":"sh/mlk3q98b","slide":19,"bbox":[72,196,1136,0]}
+{"kind":"shape","id":"sh/1kb2h4rq","slide":19,"bbox":[72,232,700,414]}
+{"kind":"shape","id":"sh/zitkfu90","slide":19,"bbox":[825,234,120,30]}
+{"kind":"textbox","id":"sh/eh03m98f","slide":19,"text":"RESULTADO","textPreview":"RESULTADO","textChars":9,"textLines":1,"bbox":[837,238,96,22]}
+{"kind":"textbox","id":"sh/lgfmt8ra","slide":19,"text":"QA promedio","textPreview":"QA promedio","textChars":11,"textLines":1,"bbox":[825,290,300,30]}
+{"kind":"textbox","id":"sh/kfml03qp","slide":19,"text":"54% → 67%","textPreview":"54% → 67%","textChars":9,"textLines":1,"bbox":[825,324,320,48]}
+{"kind":"textbox","id":"sh/ytwji98v","slide":19,"text":"no ambiguas","textPreview":"no ambiguas","textChars":11,"textLines":1,"bbox":[825,372,260,24]}
+{"kind":"textbox","id":"sh/zu5kre9g","slide":19,"text":"46% → 55%","textPreview":"46% → 55%","textChars":9,"textLines":1,"bbox":[825,422,320,48]}
+{"kind":"textbox","id":"sh/0ve1kjq1","slide":19,"text":"ambiguas","textPreview":"ambiguas","textChars":8,"textLines":1,"bbox":[825,470,260,24]}
+{"kind":"shape","id":"sh/lw72torm","slide":19,"bbox":[825,518,335,0]}
+{"kind":"textbox","id":"sh/qpwjep8z","slide":19,"text":"Preguntas aclaratorias","textPreview":"Preguntas aclaratorias","textChars":22,"textLines":1,"bbox":[825,540,300,28]}
+{"kind":"textbox","id":"sh/bq50nu9k","slide":19,"text":"0–2.5%","textPreview":"0–2.5%","textChars":6,"textLines":1,"bbox":[825,574,210,48]}
+{"kind":"textbox","id":"sh/cre1gzq5","slide":19,"text":"con contexto, en la mayoría de modelos","textPreview":"con contexto, en la mayoría de modelos","textChars":38,"textLines":1,"bbox":[1000,576,170,46]}
+{"kind":"textbox","id":"sh/dsn2p4rq","slide":19,"text":"Fuente: Su & Cardie (2026), Fig. 1 y Tablas 6–8; imagen suministrada en el proyecto","textPreview":"Fuente: Su & Cardie (2026), Fig. 1 y Tablas 6–8; imagen suministrada en el proyecto","textChars":83,"textLines":1,"bbox":[72,678,1045,20]}
+{"kind":"textbox","id":"sh/algjqt83","slide":19,"text":"19","textPreview":"19","textChars":2,"textLines":1,"bbox":[1160,676,48,22]}
+{"kind":"image","id":"im/lg3ilgve","slide":19,"name":"","geometry":"roundRect","alt":"Comparación de desempeño QA en consultas ambiguas y no ambiguas","bbox":[92,252,660,374]}
+{"kind":"notes","id":"nt/2hwms9","slide":19,"text":""}
+{"kind":"slide","id":"sl/wu1g2l","slide":20,"title":"20  /  BLUEPRINT OPERATIVO","textShapes":21}
+{"kind":"textbox","id":"sh/03upwzyp","slide":20,"text":"20  /  BLUEPRINT OPERATIVO","textPreview":"20  /  BLUEPRINT OPERATIVO","textChars":26,"textLines":1,"bbox":[72,38,430,22]}
+{"kind":"textbox","id":"sh/z2lo3uxk","slide":20,"text":"El sistema fiable gestiona incertidumbre, no solo contexto","textPreview":"El sistema fiable gestiona incertidumbre, no solo contexto","textChars":58,"textLines":1,"bbox":[72,72,1136,70]}
+{"kind":"shape","id":"sh/e1s7upgz","slide":20,"bbox":[72,156,1136,0]}
+{"kind":"shape","id":"sh/dgj61kfe","slide":20,"bbox":[260,347,44,0]}
+{"kind":"shape","id":"sh/cfapsfyt","slide":20,"bbox":[488,347,44,0]}
+{"kind":"shape","id":"sh/re1ozax8","slide":20,"bbox":[716,347,44,0]}
+{"kind":"shape","id":"sh/qds7q5gn","slide":20,"bbox":[944,347,44,0]}
+{"kind":"shape","id":"sh/pcj6x0f2","slide":20,"bbox":[72,281,190,132]}
+{"kind":"textbox","id":"sh/4bapofyh","slide":20,"text":"1","textPreview":"1","textChars":1,"textLines":1,"bbox":[86,296,30,28]}
+{"kind":"textbox","id":"sh/ed4zypkv","slide":20,"text":"DETECTAR","textPreview":"DETECTAR","textChars":8,"textLines":1,"bbox":[92,326,150,26]}
+{"kind":"textbox","id":"sh/fedg7u1g","slide":20,"text":"H(Z|X)","textPreview":"H(Z|X)","textChars":6,"textLines":1,"bbox":[88,364,158,28]}
+{"kind":"shape","id":"sh/gf6h0z21","slide":20,"bbox":[300,281,190,132]}
+{"kind":"textbox","id":"sh/1gfy94jm","slide":20,"text":"2","textPreview":"2","textChars":1,"textLines":1,"bbox":[314,296,30,28]}
+{"kind":"textbox","id":"sh/6p4zupkz","slide":20,"text":"DECIDIR","textPreview":"DECIDIR","textChars":7,"textLines":1,"bbox":[320,326,150,26]}
+{"kind":"textbox","id":"sh/radg3u14","slide":20,"text":"responder / aclarar","textPreview":"responder / aclarar","textChars":19,"textLines":1,"bbox":[316,364,158,28]}
+{"kind":"shape","id":"sh/sbmhwf2p","slide":20,"bbox":[528,281,190,132]}
+{"kind":"textbox","id":"sh/tcvy5kja","slide":20,"text":"3","textPreview":"3","textChars":1,"textLines":1,"bbox":[542,296,30,28]}
+{"kind":"textbox","id":"sh/ilkzq5kn","slide":20,"text":"RECUPERAR","textPreview":"RECUPERAR","textChars":9,"textLines":1,"bbox":[548,326,150,26]}
+{"kind":"textbox","id":"sh/jmtgza18","slide":20,"text":"por intención","textPreview":"por intención","textChars":13,"textLines":1,"bbox":[544,364,158,28]}
+{"kind":"shape","id":"sh/nq9w76h0","slide":20,"bbox":[756,281,190,132]}
+{"kind":"textbox","id":"sh/mp0vy10f","slide":20,"text":"4","textPreview":"4","textChars":1,"textLines":1,"bbox":[770,296,30,28]}
+{"kind":"textbox","id":"sh/9sre9gz6","slide":20,"text":"RESPONDER","textPreview":"RESPONDER","textChars":9,"textLines":1,"bbox":[776,326,150,26]}
+{"kind":"textbox","id":"sh/8rid0bil","slide":20,"text":"con evidencia","textPreview":"con evidencia","textChars":13,"textLines":1,"bbox":[772,364,158,28]}
+{"kind":"shape","id":"sh/vu9wbqhw","slide":20,"bbox":[984,281,190,132]}
+{"kind":"textbox","id":"sh/at0v2l0r","slide":20,"text":"5","textPreview":"5","textChars":1,"textLines":1,"bbox":[998,296,30,28]}
+{"kind":"textbox","id":"sh/xgbedgz2","slide":20,"text":"MEDIR","textPreview":"MEDIR","textChars":5,"textLines":1,"bbox":[1004,326,150,26]}
+{"kind":"textbox","id":"sh/wvix4vih","slide":20,"text":"calidad + costo","textPreview":"calidad + costo","textChars":15,"textLines":1,"bbox":[1000,364,158,28]}
+{"kind":"textbox","id":"sh/bypwzmhs","slide":20,"text":"Context Engineering = diseñar qué debe saber el modelo, cuándo y con qué confianza.","textPreview":"Context Engineering = diseñar qué debe saber el modelo, cuándo y con qué confianza.","textChars":83,"textLines":1,"bbox":[110,476,1060,68]}
+{"kind":"textbox","id":"sh/qxgvqh07","slide":20,"text":"{Caso de uso}  ·  {Política de riesgo}  ·  {Umbral de ambigüedad}","textPreview":"{Caso de uso}  ·  {Política de riesgo}  ·  {Umbral de ambigüedad}","textChars":65,"textLines":1,"bbox":[205,572,870,34]}
+{"kind":"textbox","id":"sh/g3ut0ny5","slide":20,"text":"Fuentes clave: context.md · survey_context.pdf · Zhang & Choi (2023) · Su & Cardie (2026)","textPreview":"Fuentes clave: context.md · survey_context.pdf · Zhang & Choi (2023) · Su & Cardie (2026)","textChars":89,"textLines":1,"bbox":[72,678,1045,20]}
+{"kind":"textbox","id":"sh/143atsfq","slide":20,"text":"20","textPreview":"20","textChars":2,"textLines":1,"bbox":[1160,676,48,22]}
+{"kind":"notes","id":"nt/wu1g2l","slide":20,"text":""}
