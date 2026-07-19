@@ -92,19 +92,25 @@ topics = []
 print(f"Resultados de búsqueda para la consulta: '{ambiguous_query}'\\n")
 for i, (doc, score) in enumerate(results):
     docs.append(f"Doc {i+1}")
-    # Convertir distancia L2 a una métrica de similitud ilustrativa (invirtiendo)
-    similarity = 1 / (1 + score)
+    # FAISS devuelve la distancia L2 al cuadrado. Para vectores normalizados (OpenAI), podemos convertir a Similitud Coseno:
+    # Cosine Similarity = 1 - (L2_Distance^2 / 2)
+    similarity = 1 - (score / 2)
     scores.append(similarity)
     topics.append(doc.metadata["topic"])
-    print(f"Doc {i+1} [{doc.metadata['topic']}] (Score L2: {score:.4f}): {doc.page_content[:70]}...")
+    print(f"Doc {i+1} [{doc.metadata['topic']}] (Score L2: {score:.4f} | Cosine: {similarity:.4f}): {doc.page_content[:70]}...")
 
 # Gráfico de similitudes (Margen Delta)
 plt.figure(figsize=(8, 4))
 colors = ['#7065E8' if t == 'ai_agents' else '#3DD6C6' for t in topics]
 bars = plt.bar(docs, scores, color=colors)
 
-# Calcular Delta entre los 2 mejores de distintos tópicos
-delta = abs(scores[0] - scores[1]) # Aproximación simplificada
+# Calcular Delta real entre la mejor coincidencia de IA y la mejor de Hardware
+try:
+    score_ai = max([s for s, t in zip(scores, topics) if t == 'ai_agents'])
+    score_hw = max([s for s, t in zip(scores, topics) if t == 'hardware'])
+    delta = abs(score_ai - score_hw)
+except ValueError:
+    delta = 0 # En caso de que no haya de ambos
 
 plt.title(f"Similitud Vectorial por Documento\\nMargen Δ ≈ {delta:.4f} (Ambigüedad Alta)")
 plt.ylabel("Similitud (Transformada)")
@@ -171,32 +177,39 @@ user_clarification = "Me refiero a los modelos de inteligencia artificial."
 
 print(f"👤 Respuesta del usuario: '{user_clarification}'\\n")
 
-# Construimos la consulta robusta orquestando la consulta original + la clarificación
-robust_query = f"{ambiguous_query} (Contexto aclarado: {user_clarification})"
+# Context Engineering: Usamos el LLM para reescribir la consulta a una señal densa y purificada (Z)
+rewrite_prompt = ChatPromptTemplate.from_messages([
+    ("system", "Reescribe la consulta del usuario combinando la consulta original y su aclaración en una única frase de búsqueda altamente específica, técnica y libre de ambigüedad. No uses la palabra genérica que causó la ambigüedad si puedes evitarlo. Solo devuelve la nueva consulta sin comillas."),
+    ("user", "Consulta original: {query}\\nAclaración: {clarification}")
+])
+rewrite_chain = rewrite_prompt | llm
+robust_query = rewrite_chain.invoke({"query": ambiguous_query, "clarification": user_clarification}).content
 
 print(f"Nueva búsqueda vectorial con señal densa: '{robust_query}'\\n")
 
-robust_results = vector_store.similarity_search_with_score(robust_query, k=3)
+robust_results = vector_store.similarity_search_with_score(robust_query, k=6)
 robust_docs = []
 robust_scores = []
 robust_topics = []
 
 for i, (doc, score) in enumerate(robust_results):
     robust_docs.append(f"Doc {i+1}")
-    similarity = 1 / (1 + score)
+    similarity = 1 - (score / 2)
     robust_scores.append(similarity)
     robust_topics.append(doc.metadata["topic"])
-    print(f"[{doc.metadata['topic']}] Score: {score:.4f} | {doc.page_content[:70]}...")
+    print(f"[{doc.metadata['topic']}] Score L2: {score:.4f} | Cosine: {similarity:.4f} | {doc.page_content[:70]}...")
 
 # Gráfico de similitudes (Margen Delta ampliado)
 plt.figure(figsize=(8, 4))
 colors = ['#7065E8' if t == 'ai_agents' else '#3DD6C6' for t in robust_topics]
 bars = plt.bar(robust_docs, robust_scores, color=colors)
 
-# Calcular nuevo Delta
-if len(robust_scores) > 1:
-    new_delta = abs(robust_scores[0] - robust_scores[1])
-else:
+# Calcular nuevo Delta real
+try:
+    robust_score_ai = max([s for s, t in zip(robust_scores, robust_topics) if t == 'ai_agents'])
+    robust_score_hw = max([s for s, t in zip(robust_scores, robust_topics) if t == 'hardware'])
+    new_delta = abs(robust_score_ai - robust_score_hw)
+except ValueError:
     new_delta = 0
 
 plt.title(f"Similitud Posterior a la Clarificación\\nMargen Δ ≈ {new_delta:.4f} (Señal Pura)")
@@ -208,7 +221,7 @@ plt.show()
 print("ÉXITO: Al aclarar la intención latente Z, el sistema recupera 100% señal relevante, eliminando el ruido y permitiendo una respuesta determinista.")
 """)
 
-output_path = Path("context_engineering_demo.ipynb")
+output_path = Path("demo/context_engineering_demo.ipynb")
 with open(output_path, "w", encoding="utf-8") as f:
     json.dump(notebook, f, indent=2, ensure_ascii=False)
 
