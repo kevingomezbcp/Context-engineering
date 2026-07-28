@@ -24,8 +24,10 @@ from pptx.util import Pt
 
 
 ROOT = Path(__file__).resolve().parent.parent
-DEFAULT_INPUT = ROOT / "outputs" / "Context_Engineering_y_Ambiguedad.pptx"
-DEFAULT_OUTPUT = ROOT / "outputs" / "Context_Engineering_y_Ambiguedad_refinada_python.pptx"
+PRESENTATION_DIR = ROOT / "presentation" if (ROOT / "presentation").exists() else ROOT / "outputs"
+DEFAULT_INPUT = PRESENTATION_DIR / "Context_Engineering_y_Ambiguedad.pptx"
+DEFAULT_OUTPUT = PRESENTATION_DIR / "Context_Engineering_y_Ambiguedad_refinada_python.pptx"
+
 
 
 # Paleta reducida. Los grises casi idénticos del archivo original convergen

@@ -76,8 +76,10 @@ from pptx.util import Inches, Pt
 
 
 ROOT = Path(__file__).resolve().parent.parent
-DEFAULT_INPUT = ROOT / "outputs" / "Context_Engineering_y_Ambiguedad_refinada_python.pptx"
-DEFAULT_OUTPUT = ROOT / "outputs" / "Context_Engineering_y_Ambiguedad_final_matematica.pptx"
+PRESENTATION_DIR = ROOT / "presentation" if (ROOT / "presentation").exists() else ROOT / "outputs"
+DEFAULT_INPUT = PRESENTATION_DIR / "Context_Engineering_y_Ambiguedad_refinada_python.pptx"
+DEFAULT_OUTPUT = PRESENTATION_DIR / "Context_Engineering_y_Ambiguedad_final_matematica.pptx"
+
 
 PALETTE = {
     "ink": "101526",
@@ -316,8 +318,34 @@ def update_equations(prs: Presentation, tmp_dir: Path) -> None:
                      fontsize=32)
     replace_equation(slide, tmp_dir, "s05_example",
                      "P(“24” | X,C) > P(“12” | X,C)",
-                     r"p(y_t=24\mid X,C)>p(y_t=12\mid X,C)", fontsize=25, align="center")
-    add_legend(slide, "θ parámetros del LLM · t posición · yₜ token actual · y<ₜ prefijo generado",
+                     r"p(y_t=24\mid X,C)>p(y_t=12\mid X,C)", fontsize=24, align="center")
+
+    # Añadir consulta explícita X en la tarjeta del ejemplo
+    query_box = slide.shapes.add_textbox(Inches(5.50), Inches(2.32), Inches(3.20), Inches(0.32))
+    tf_q = query_box.text_frame
+    tf_q.clear()
+    tf_q.margin_left = 0
+    tf_q.margin_right = 0
+    tf_q.margin_top = 0
+    tf_q.margin_bottom = 0
+    tf_q.word_wrap = True
+    tf_q.vertical_anchor = MSO_ANCHOR.MIDDLE
+    p_q = tf_q.paragraphs[0]
+    p_q.alignment = PP_ALIGN.LEFT
+    r_q1 = p_q.add_run()
+    r_q1.text = "Consulta (X): "
+    r_q1.font.name = "Aptos"
+    r_q1.font.size = Pt(11.5)
+    r_q1.font.bold = True
+    r_q1.font.color.rgb = RGBColor.from_string(PALETTE["violet"])
+    r_q2 = p_q.add_run()
+    r_q2.text = "«¿Cuánto dura la garantía?»"
+    r_q2.font.name = "Aptos"
+    r_q2.font.size = Pt(11.5)
+    r_q2.font.italic = True
+    r_q2.font.color.rgb = RGBColor.from_string(PALETTE["ink"])
+
+    add_legend(slide, "θ parámetros · t posición · yₜ token actual · X consulta («¿Cuánto dura la garantía?») · C contexto (contrato)",
                Inches(0.75), Inches(6.03), Inches(10.8), Inches(0.32))
 
     # 06 · Entropía e información mutua.
@@ -330,8 +358,9 @@ def update_equations(prs: Presentation, tmp_dir: Path) -> None:
                      color=PALETTE["violet"], fontsize=28,
                      box=(Inches(0.75), Inches(3.15), Inches(6.15), Inches(0.55)))
     add_legend(slide,
-               "H entropía · I información mutua · X consulta · Y respuesta · C contexto\nVálido para un predictor ideal, en promedio sobre C.",
+               "H entropía (incertidumbre) · I información mutua condicional · X consulta · Y respuesta · C contexto\nEl contexto es valioso cuando reduce la incertidumbre sobre la respuesta Y.",
                Inches(0.75), Inches(4.55), Inches(6.15), Inches(0.68), size=11.5)
+
 
     # 07 · Modelo conceptual, no identidad probabilística.
     slide = prs.slides[6]
@@ -744,6 +773,149 @@ def add_conversational_challenges_slide(prs: Presentation):
     slide_id_list.insert(11, new_id)
 
 
+def add_cot_foundation_slide(prs: Presentation, tmp_dir: Path):
+    layout = min(prs.slide_layouts, key=lambda item: len(item.placeholders))
+    slide = prs.slides.add_slide(layout)
+    for placeholder in list(slide.placeholders):
+        remove_shape(placeholder)
+    background = slide.background.fill
+    background.solid()
+    background.fore_color.rgb = RGBColor.from_string(PALETTE["white"])
+
+    kicker = slide.shapes.add_textbox(Inches(0.75), Inches(0.40), Inches(6.5), Inches(0.24))
+    set_text(kicker, "11 / CHAIN-OF-THOUGHT", "Aptos", 12, PALETTE["violet"], True)
+
+    title = slide.shapes.add_textbox(Inches(0.75), Inches(0.76), Inches(11.85), Inches(0.64))
+    set_text(title, "Chain-of-Thought extiende el prefijo y reduce la entropía", "Aptos Display", 34,
+             PALETTE["ink"], True)
+
+    divider = slide.shapes.add_shape(MSO_AUTO_SHAPE_TYPE.RECTANGLE,
+                                     Inches(0.75), Inches(1.55), Inches(11.83), Inches(0.012))
+    divider.fill.solid()
+    divider.fill.fore_color.rgb = RGBColor.from_string(PALETTE["line_light"])
+    divider.line.fill.background()
+
+    # Left Card: Fundamento Probabilístico
+    left_card = slide.shapes.add_shape(MSO_AUTO_SHAPE_TYPE.ROUNDED_RECTANGLE, Inches(0.65), Inches(1.68), Inches(5.70), Inches(3.25))
+    style_card(left_card, bg_color="F0EEFF", border_color=PALETTE["violet"], border_width=1.5, rounded=True)
+    slide.shapes._spTree.remove(left_card._element)
+    slide.shapes._spTree.insert(2, left_card._element)
+
+    c1_title = slide.shapes.add_textbox(Inches(0.78), Inches(1.78), Inches(5.45), Inches(0.35))
+    set_text(c1_title, "1. Fundamento Probabilístico", "Aptos", 16, PALETTE["violet"], True)
+
+    add_equation(slide, tmp_dir, "s_cot_formula",
+                 r"p_\theta(Y\mid X,C,R)=\prod_{t=m+1}^{T}p_\theta(y_t\mid X,C,r_1,\dots,r_m,y_{<t})",
+                 Inches(0.78), Inches(2.18), Inches(5.45), Inches(0.62),
+                 color=PALETTE["ink"], fontsize=19, align="center")
+
+    add_equation(slide, tmp_dir, "s_cot_entropy",
+                 r"H(Y\mid X,C,R)\leq H(Y\mid X,C)",
+                 Inches(0.78), Inches(2.85), Inches(5.45), Inches(0.42),
+                 color=PALETTE["violet"], fontsize=22, align="center")
+
+    c1_body = slide.shapes.add_textbox(Inches(0.78), Inches(3.35), Inches(5.45), Inches(1.50))
+    tf1 = c1_body.text_frame
+    tf1.clear()
+    tf1.word_wrap = True
+    p1 = tf1.paragraphs[0]
+    r1 = p1.add_run()
+    r1.text = "• Prefijo extendido y<t: "
+    r1.font.name = "Aptos"
+    r1.font.size = Pt(12)
+    r1.font.bold = True
+    r1.font.color.rgb = RGBColor.from_string(PALETTE["ink"])
+    r1_sub = p1.add_run()
+    r1_sub.text = "Los tokens de razonamiento R=(r₁..rₘ) se incorporan a la historia autoregresiva antes de generar Y.\n"
+    r1_sub.font.name = "Aptos"
+    r1_sub.font.size = Pt(11.5)
+    r1_sub.font.color.rgb = RGBColor.from_string(PALETTE["body_light"])
+
+    p2 = tf1.add_paragraph()
+    r2 = p2.add_run()
+    r2.text = "• Pasos de atención extra: "
+    r2.font.name = "Aptos"
+    r2.font.size = Pt(12)
+    r2.font.bold = True
+    r2.font.color.rgb = RGBColor.from_string(PALETTE["ink"])
+    r2_sub = p2.add_run()
+    r2_sub.text = "Cada token r_t brinda un paso de cómputo adicional para integrar la evidencia de X y C."
+    r2_sub.font.name = "Aptos"
+    r2_sub.font.size = Pt(11.5)
+    r2_sub.font.color.rgb = RGBColor.from_string(PALETTE["body_light"])
+
+    # Right Card: Límites y Riesgos
+    right_card = slide.shapes.add_shape(MSO_AUTO_SHAPE_TYPE.ROUNDED_RECTANGLE, Inches(6.75), Inches(1.68), Inches(5.70), Inches(3.25))
+    style_card(right_card, bg_color="FFF7F7", border_color=PALETTE["red"], border_width=1.5, rounded=True)
+    slide.shapes._spTree.remove(right_card._element)
+    slide.shapes._spTree.insert(3, right_card._element)
+
+    c2_title = slide.shapes.add_textbox(Inches(6.88), Inches(1.78), Inches(5.45), Inches(0.35))
+    set_text(c2_title, "2. Límites y Riesgos de CoT", "Aptos", 16, PALETTE["red"], True)
+
+    c2_box1 = slide.shapes.add_shape(MSO_AUTO_SHAPE_TYPE.ROUNDED_RECTANGLE, Inches(6.88), Inches(2.20), Inches(5.44), Inches(1.28))
+    style_card(c2_box1, bg_color="FDF0F0", border_color=PALETTE["red"], border_width=1, rounded=True)
+
+    t_box1 = slide.shapes.add_textbox(Inches(6.98), Inches(2.25), Inches(5.24), Inches(1.18))
+    tf_b1 = t_box1.text_frame
+    tf_b1.clear()
+    tf_b1.word_wrap = True
+    p_b1 = tf_b1.paragraphs[0]
+    r_b1_head = p_b1.add_run()
+    r_b1_head.text = "Cascada de Errores (Error Propagation)\n"
+    r_b1_head.font.name = "Aptos"
+    r_b1_head.font.size = Pt(13)
+    r_b1_head.font.bold = True
+    r_b1_head.font.color.rgb = RGBColor.from_string(PALETTE["red"])
+    r_b1_body = p_b1.add_run()
+    r_b1_body.text = "Un fallo o alucinación en r₁ o r₂ queda fijado en y<t. Por autoconsistencia, el modelo se condiciona a justificar una respuesta final errónea."
+    r_b1_body.font.name = "Aptos"
+    r_b1_body.font.size = Pt(11.5)
+    r_b1_body.font.color.rgb = RGBColor.from_string(PALETTE["body_light"])
+
+    c2_box2 = slide.shapes.add_shape(MSO_AUTO_SHAPE_TYPE.ROUNDED_RECTANGLE, Inches(6.88), Inches(3.55), Inches(5.44), Inches(1.28))
+    style_card(c2_box2, bg_color="FFF7EE", border_color=PALETTE["orange"], border_width=1, rounded=True)
+
+    t_box2 = slide.shapes.add_textbox(Inches(6.98), Inches(3.60), Inches(5.24), Inches(1.18))
+    tf_b2 = t_box2.text_frame
+    tf_b2.clear()
+    tf_b2.word_wrap = True
+    p_b2 = tf_b2.paragraphs[0]
+    r_b2_head = p_b2.add_run()
+    r_b2_head.text = "Overthinking y Ruido en el Contexto\n"
+    r_b2_head.font.name = "Aptos"
+    r_b2_head.font.size = Pt(13)
+    r_b2_head.font.bold = True
+    r_b2_head.font.color.rgb = RGBColor.from_string(PALETTE["orange"])
+    r_b2_body = p_b2.add_run()
+    r_b2_body.text = "Un razonamiento excesivamente largo infla |C|, inyectando ruido N(C) y reduciendo la densidad de señal útil por token I(Y;C|X)/|C|."
+    r_b2_body.font.name = "Aptos"
+    r_b2_body.font.size = Pt(11.5)
+    r_b2_body.font.color.rgb = RGBColor.from_string(PALETTE["body_light"])
+
+    # Bottom Takeaway
+    takeaway = slide.shapes.add_textbox(Inches(1.15), Inches(5.02), Inches(11.0), Inches(0.55))
+    set_text(takeaway, "CoT maximiza la probabilidad en tareas complejas descomponiendo la inferencia, pero no resuelve la ambigüedad original si la consulta X es indeterminada.",
+             "Aptos Display", 17, PALETTE["violet"], True, PP_ALIGN.CENTER)
+
+    add_legend(slide,
+               "X consulta · C contexto · R tokens de razonamiento · Y respuesta final · H entropía condicional · N ruido en el prompt",
+               Inches(0.78), Inches(5.75), Inches(11.55), Inches(0.72), size=11.5)
+
+    source = slide.shapes.add_textbox(Inches(0.75), Inches(7.04), Inches(10.9), Inches(0.20))
+    set_text(source, "Fuente: context.md — razonamiento autoregresivo, descomposición Bayesiana y análisis de riesgos de CoT",
+             "Aptos", 10.5, PALETTE["footer_light"], False)
+    page = slide.shapes.add_textbox(Inches(12.08), Inches(7.02), Inches(0.50), Inches(0.22))
+    set_text(page, "11", "Aptos", 11, PALETTE["footer_light"], True, PP_ALIGN.RIGHT)
+
+    # Insert slide at index 10 (so it becomes Slide 11 before Conversational Challenges and Ambiguity)
+    slide_id_list = prs.slides._sldIdLst
+    new_id = slide_id_list[-1]
+    slide_id_list.remove(new_id)
+    slide_id_list.insert(10, new_id)
+
+
+
 def renumber_slides(prs: Presentation) -> None:
     for number, slide in enumerate(prs.slides, 1):
         # Número inferior derecho.
@@ -1104,8 +1276,8 @@ def apply_styling_improvements(prs: Presentation) -> None:
 
 
 def validate(prs: Presentation) -> None:
-    if len(prs.slides) != 22:
-        raise ValueError(f"Se esperaban 22 diapositivas y se encontraron {len(prs.slides)}")
+    if len(prs.slides) != 23:
+        raise ValueError(f"Se esperaban 23 diapositivas y se encontraron {len(prs.slides)}")
 
     unresolved = []
     for slide_no, slide in enumerate(prs.slides, 1):
@@ -1126,6 +1298,7 @@ def improve(input_path: Path, output_path: Path) -> None:
         tmp_dir = Path(temp)
         update_equations(prs, tmp_dir)
         add_new_comparison_slide(prs, tmp_dir)
+        add_cot_foundation_slide(prs, tmp_dir)
         add_conversational_challenges_slide(prs)
 
     apply_styling_improvements(prs)
