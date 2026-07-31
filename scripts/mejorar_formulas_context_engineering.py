@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Genera la versión profesional del deck de Context Engineering.
+Genera la versión trazable y profesional del deck de Context Engineering.
 
 Este archivo es un lanzador liviano. La edición de PowerPoint se implementa en
 ``mejorar_formulas_context_engineering.mjs`` con ``@oai/artifact-tool`` para:
@@ -8,8 +8,10 @@ Este archivo es un lanzador liviano. La edición de PowerPoint se implementa en
 - conservar maestros, layouts y elementos heredados;
 - corregir geometrías inválidas antes de exportar;
 - evitar mutaciones directas de XML y APIs privadas de ``python-pptx``;
-- añadir una conclusión ejecutiva y ocho anexos de derivación simbólica;
-- renderizar las 35 diapositivas como parte del control de calidad.
+- renderizar las fórmulas con Matplotlib MathText y fuente STIX;
+- separar resultados citados, identidades matemáticas, derivaciones y ejemplos;
+- añadir una demo conceptual, una conclusión ejecutiva y ocho anexos;
+- renderizar las 36 diapositivas como parte del control de calidad.
 
 La implementación anterior se conserva en
 ``mejorar_formulas_context_engineering_legacy.py`` solo como referencia.
@@ -31,18 +33,18 @@ import zipfile
 SCRIPT_DIR = Path(__file__).resolve().parent
 REPO_ROOT = SCRIPT_DIR.parent
 JS_GENERATOR = SCRIPT_DIR / "mejorar_formulas_context_engineering.mjs"
-ANNEX_MODULE = SCRIPT_DIR / "conclusiones_anexos_context_engineering.mjs"
-FORMULA_LAYOUT_MODULE = SCRIPT_DIR / "organizar_slides_6_7_context_engineering.mjs"
+MATH_MANIFEST = SCRIPT_DIR / "formulas_context_engineering.json"
+MATH_RENDERER = SCRIPT_DIR / "render_mathtext_context_engineering.py"
 
 DEFAULT_INPUT = (
     REPO_ROOT
     / "presentation"
-    / "Context_Engineering_y_Ambiguedad_final_matematica.pptx"
+    / "Context_Engineering_y_Ambiguedad_profesional_con_anexos.pptx"
 )
 DEFAULT_OUTPUT = (
     REPO_ROOT
     / "presentation"
-    / "Context_Engineering_y_Ambiguedad_profesional_con_anexos.pptx"
+    / "Context_Engineering_y_Ambiguedad_fuentes_verificadas.pptx"
 )
 DEFAULT_WORKSPACE = REPO_ROOT / ".codex-tmp" / "context-engineering-ppt-runtime"
 
@@ -148,7 +150,7 @@ def run(command: list[str], *, cwd: Path) -> None:
     subprocess.run(command, cwd=cwd, check=True)
 
 
-def validate_openxml_package(pptx_path: Path, expected_slides: int = 35) -> None:
+def validate_openxml_package(pptx_path: Path, expected_slides: int = 36) -> None:
     """Valida los fallos de paquete que provocaban la reparación de PowerPoint."""
 
     required_parts = {
@@ -281,12 +283,10 @@ def main() -> int:
         raise FileNotFoundError(f"No existe el PPTX fuente: {input_pptx}")
     if not JS_GENERATOR.is_file():
         raise FileNotFoundError(f"No existe el generador JS: {JS_GENERATOR}")
-    if not ANNEX_MODULE.is_file():
-        raise FileNotFoundError(f"No existe el módulo de anexos: {ANNEX_MODULE}")
-    if not FORMULA_LAYOUT_MODULE.is_file():
-        raise FileNotFoundError(
-            f"No existe el módulo de organización matemática: {FORMULA_LAYOUT_MODULE}"
-        )
+    if not MATH_MANIFEST.is_file():
+        raise FileNotFoundError(f"No existe el manifiesto MathText: {MATH_MANIFEST}")
+    if not MATH_RENDERER.is_file():
+        raise FileNotFoundError(f"No existe el renderizador MathText: {MATH_RENDERER}")
 
     node = resolve_node(args.node)
     workspace.mkdir(parents=True, exist_ok=True)
@@ -305,12 +305,20 @@ def main() -> int:
 
     workspace_generator = workspace / JS_GENERATOR.name
     shutil.copy2(JS_GENERATOR, workspace_generator)
-    workspace_annex_module = workspace / ANNEX_MODULE.name
-    shutil.copy2(ANNEX_MODULE, workspace_annex_module)
-    workspace_formula_layout_module = workspace / FORMULA_LAYOUT_MODULE.name
-    shutil.copy2(FORMULA_LAYOUT_MODULE, workspace_formula_layout_module)
 
     qa_dir = workspace / "final-qa"
+    math_dir = workspace / "mathtext"
+    run(
+        [
+            sys.executable,
+            str(MATH_RENDERER),
+            "--manifest",
+            str(MATH_MANIFEST),
+            "--output-dir",
+            str(math_dir),
+        ],
+        cwd=REPO_ROOT,
+    )
     output_pptx.parent.mkdir(parents=True, exist_ok=True)
     run(
         [
@@ -322,6 +330,8 @@ def main() -> int:
             str(output_pptx),
             "--qa-dir",
             str(qa_dir),
+            "--math-dir",
+            str(math_dir),
         ],
         cwd=workspace,
     )
