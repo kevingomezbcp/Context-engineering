@@ -10,8 +10,9 @@ Este repositorio contiene materiales, investigaciones y ejemplos prácticos sobr
   - `context.md`: Documento principal con la teoría, fórmulas y conceptos clave de Context Engineering.
 - `demo/`: Laboratorio práctico interactivo.
   - `context_engineering_demo.ipynb`: Jupyter notebook demostrativo que aplica una política de clarificación para resolver ambigüedad ($Z$) utilizando `langchain` y `faiss`.
+  - `context_optimization_demo.py`: Script ejecutable de optimización de contexto y resiliencia multi-proveedor (OpenAI con fallback automático a AWS Bedrock).
   - `requirements.txt`: Dependencias para ejecutar el laboratorio.
-  - `.env`: (Debe crearse a partir del `.env.example` interno) Archivo para variables de entorno (como `OPENAI_API_KEY`).
+  - `.env`: Archivo para variables de entorno (OpenAI y AWS Bedrock).
 - [`eval-context/`](eval-context/README.md): Demo con Ragas para comparar 28 contextos mockeados completos (instrucciones, historial, memoria, documentos y herramientas), con métricas de contradicción, salud y limpieza, juez LLM opcional y reporte HTML interactivo.
 - `presentation/`: Presentaciones generadas (PowerPoint).
   - Contiene las diferentes versiones e iteraciones de la baraja ejecutiva sobre Context Engineering.
@@ -28,9 +29,14 @@ Este repositorio contiene materiales, investigaciones y ejemplos prácticos sobr
    pip install -r requirements.txt
    ```
 3. Configura tus credenciales:
-   - Abre o crea el archivo `.env` en la carpeta `demo/`.
-   - Añade tu clave de API: `OPENAI_API_KEY=tu_clave_aqui`
-4. Ejecuta Jupyter:
-   ```bash
-   jupyter notebook context_engineering_demo.ipynb
-   ```
+   - Abre o edita el archivo `.env` en la carpeta `demo/`.
+   - Configura `OPENAI_API_KEY` (proveedor principal) y/o las credenciales de AWS Bedrock (`AWS_REGION`, `AWS_ACCESS_KEY_ID`, etc., o perfil de AWS CLI).
+4. Ejecuta el demo por consola o Jupyter:
+   - Script de optimización de contexto con fallback:
+     ```bash
+     python context_optimization_demo.py
+     ```
+   - Jupyter Notebook interactivo:
+     ```bash
+     jupyter notebook context_engineering_demo.ipynb
+     ```

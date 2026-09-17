@@ -7,6 +7,7 @@ Este script demuestra cómo aplicar técnicas de Context Engineering en LangChai
 3. Reordenamiento de Contexto (prevención de 'Lost in the Middle').
 4. Compresión y Extracción de Evidencia Relevante R(C).
 5. Medición Cuantitativa de Reducción de Tokens e Inferencia con LLM.
+6. Estrategia de Resiliencia: OpenAI como proveedor principal y AWS Bedrock como fallback.
 
 Uso:
     python demo/context_optimization_demo.py
@@ -21,8 +22,136 @@ from langchain_core.documents import Document
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.runnables import RunnableLambda
-from langchain_openai import OpenAIEmbeddings, ChatOpenAI
 from langchain_community.vectorstores import FAISS
+
+# Proveedor OpenAI
+try:
+    from langchain_openai import OpenAIEmbeddings, ChatOpenAI
+    HAS_OPENAI = True
+except ImportError:
+    OpenAIEmbeddings = None
+    ChatOpenAI = None
+    HAS_OPENAI = False
+
+# Proveedor AWS Bedrock (soporte para boto3)
+try:
+    import boto3
+    HAS_BOTO3 = True
+except ImportError:
+    boto3 = None
+    HAS_BOTO3 = False
+
+
+def create_bedrock_client():
+    """
+    Crea un cliente boto3 para AWS Bedrock Runtime respetando variables de entorno,
+    perfiles configurados o roles IAM.
+    """
+    if not HAS_BOTO3:
+        return None
+    try:
+        region = os.environ.get("AWS_REGION") or os.environ.get("AWS_DEFAULT_REGION") or "us-east-1"
+        session_kwargs = {"region_name": region}
+
+        if os.environ.get("AWS_PROFILE"):
+            session_kwargs["profile_name"] = os.environ.get("AWS_PROFILE")
+        if os.environ.get("AWS_ACCESS_KEY_ID") and os.environ.get("AWS_SECRET_ACCESS_KEY"):
+            session_kwargs["aws_access_key_id"] = os.environ.get("AWS_ACCESS_KEY_ID")
+            session_kwargs["aws_secret_access_key"] = os.environ.get("AWS_SECRET_ACCESS_KEY")
+            if os.environ.get("AWS_SESSION_TOKEN"):
+                session_kwargs["aws_session_token"] = os.environ.get("AWS_SESSION_TOKEN")
+
+        session = boto3.Session(**session_kwargs)
+        return session.client("bedrock-runtime")
+    except Exception as e:
+        print(f"⚠️ Advertencia al inicializar cliente Bedrock boto3: {e}")
+        return None
+
+
+def get_bedrock_llm():
+    """
+    Inicializa el modelo de chat de AWS Bedrock utilizando langchain-aws o langchain-community.
+    """
+    if not HAS_BOTO3:
+        return None
+
+    model_id = os.environ.get("BEDROCK_MODEL_ID", "anthropic.claude-3-haiku-20240307-v1:0")
+    region = os.environ.get("AWS_REGION") or os.environ.get("AWS_DEFAULT_REGION") or "us-east-1"
+    client = create_bedrock_client()
+
+    # 1. Intentar con ChatBedrock de langchain_aws
+    try:
+        from langchain_aws import ChatBedrock
+        return ChatBedrock(
+            model_id=model_id,
+            client=client,
+            region_name=region,
+            model_kwargs={"temperature": 0.0}
+        )
+    except (ImportError, Exception):
+        pass
+
+    # 2. Intentar con ChatBedrockConverse de langchain_aws (API Converse unificada)
+    try:
+        from langchain_aws import ChatBedrockConverse
+        return ChatBedrockConverse(
+            model=model_id,
+            client=client,
+            region_name=region,
+            temperature=0.0
+        )
+    except (ImportError, Exception):
+        pass
+
+    # 3. Intentar con BedrockChat de langchain_community como respaldo
+    try:
+        from langchain_community.chat_models import BedrockChat
+        return BedrockChat(
+            model_id=model_id,
+            client=client,
+            region_name=region,
+            model_kwargs={"temperature": 0.0}
+        )
+    except (ImportError, Exception):
+        pass
+
+    return None
+
+
+def get_bedrock_embeddings():
+    """
+    Inicializa el modelo de embeddings de AWS Bedrock (ej. Amazon Titan Embeddings).
+    """
+    if not HAS_BOTO3:
+        return None
+
+    model_id = os.environ.get("BEDROCK_EMBEDDING_MODEL_ID", "amazon.titan-embed-text-v1")
+    region = os.environ.get("AWS_REGION") or os.environ.get("AWS_DEFAULT_REGION") or "us-east-1"
+    client = create_bedrock_client()
+
+    # 1. langchain_aws
+    try:
+        from langchain_aws import BedrockEmbeddings
+        return BedrockEmbeddings(
+            model_id=model_id,
+            client=client,
+            region_name=region
+        )
+    except (ImportError, Exception):
+        pass
+
+    # 2. langchain_community
+    try:
+        from langchain_community.embeddings import BedrockEmbeddings
+        return BedrockEmbeddings(
+            model_id=model_id,
+            client=client,
+            region_name=region
+        )
+    except (ImportError, Exception):
+        pass
+
+    return None
 
 
 def count_tokens(text: str, model_name: str = "gpt-4o-mini") -> int:
@@ -78,15 +207,30 @@ def compress_context_to_evidence(documents: list[Document], query: str) -> str:
 
 
 def main():
-    # 1. Cargar API Key
+    # 1. Cargar variables de entorno y validar proveedores
     load_dotenv()
-    if not os.environ.get("OPENAI_API_KEY"):
-        print("⚠️ ADVERTENCIA: No se encontró OPENAI_API_KEY. Por favor, configúrala en el archivo .env")
+    openai_api_key = os.environ.get("OPENAI_API_KEY")
+    simulate_failure = os.environ.get("SIMULATE_OPENAI_FAILURE", "false").strip().lower() in ("true", "1", "yes")
+
+    has_aws_config = bool(
+        os.environ.get("AWS_ACCESS_KEY_ID") or
+        os.environ.get("AWS_PROFILE") or
+        os.environ.get("AWS_DEFAULT_REGION") or
+        os.environ.get("AWS_REGION")
+    )
+
+    if not openai_api_key and not has_aws_config:
+        print("⚠️ ADVERTENCIA: No se encontró configuración ni de OPENAI_API_KEY ni de AWS Bedrock.")
+        print("Por favor, configura al menos uno de los proveedores en el archivo demo/.env")
         return
 
     print("=" * 75)
-    print("🚀 DEMO DE CONTEXT ENGINEERING: OPTIMIZACIÓN Y MEDICIÓN DE CONTEXTO")
+    print("🚀 DEMO DE CONTEXT ENGINEERING: OPTIMIZACIÓN, RESILIENCIA Y FALLBACK")
     print("=" * 75)
+
+    if simulate_failure:
+        print("🧪 [MODO PRUEBA ACTIVADO]: 'SIMULATE_OPENAI_FAILURE=true'")
+        print("   Se forzará un error en OpenAI para verificar el fallback automático a AWS Bedrock.\n")
 
     # 2. Construir Base de Conocimiento con Chunks Largos y Ruido
     raw_documents = [
@@ -115,9 +259,41 @@ Para estaciones de trabajo y laptops principales rige la garantía extendida de 
         )
     ]
 
-    # 3. Almacén Vectorial FAISS
-    embeddings = OpenAIEmbeddings(model="text-embedding-3-small")
-    vector_store = FAISS.from_documents(raw_documents, embeddings)
+    # 3. Almacén Vectorial FAISS con Resiliencia y Fallback (OpenAI -> AWS Bedrock)
+    print("📦 Inicializando Almacén Vectorial (FAISS)...")
+    vector_store = None
+    embedding_provider_used = None
+
+    # Intentar OpenAI Embeddings si está disponible y no se simula falla
+    if openai_api_key and HAS_OPENAI and not simulate_failure:
+        try:
+            openai_embed_model = os.environ.get("OPENAI_EMBEDDING_MODEL", "text-embedding-3-small")
+            embeddings = OpenAIEmbeddings(model=openai_embed_model)
+            vector_store = FAISS.from_documents(raw_documents, embeddings)
+            embedding_provider_used = f"OpenAI ({openai_embed_model})"
+            print(f"   ✅ Embeddings calculados con: {embedding_provider_used}")
+        except Exception as e:
+            print(f"   ⚠️ Falló la generación de embeddings con OpenAI: {e}")
+            print("   🔄 Activando fallback para embeddings con AWS Bedrock...")
+
+    # Si OpenAI falló o no estaba configurado, intentar AWS Bedrock Embeddings
+    if vector_store is None:
+        bedrock_embeddings = get_bedrock_embeddings()
+        if bedrock_embeddings is not None:
+            try:
+                bedrock_embed_model = os.environ.get("BEDROCK_EMBEDDING_MODEL_ID", "amazon.titan-embed-text-v1")
+                vector_store = FAISS.from_documents(raw_documents, bedrock_embeddings)
+                embedding_provider_used = f"AWS Bedrock ({bedrock_embed_model})"
+                print(f"   ✅ Embeddings calculados con fallback: {embedding_provider_used}")
+            except Exception as e:
+                print(f"   ❌ Error al calcular embeddings con AWS Bedrock: {e}")
+        else:
+            print("   ⚠️ No se pudo inicializar AWS Bedrock Embeddings (verificar boto3 o credenciales).")
+
+    if vector_store is None:
+        print("\n❌ ERROR CRÍTICO: No se pudo generar el almacén vectorial ni con OpenAI ni con AWS Bedrock.")
+        print("Por favor, verifica tus claves en demo/.env o credenciales de AWS.")
+        return
 
     query = "¿Cuál es el tiempo de garantía para las laptops asignadas?"
     print(f"\n📌 CONSULTA (X): \"{query}\"\n")
@@ -125,7 +301,6 @@ Para estaciones de trabajo y laptops principales rige la garantía extendida de 
     # --------------------------------------------------------------------------
     # ESCENARIO 1: RAG CRUDO (Sin Context Engineering)
     # --------------------------------------------------------------------------
-    # Búsqueda vectorial directa sin filtrado ni compresión
     raw_results = vector_store.similarity_search_with_score(query, k=3)
     raw_docs = [doc for doc, _ in raw_results]
     raw_context = "\n\n".join([d.page_content for d in raw_docs])
@@ -139,13 +314,12 @@ Para estaciones de trabajo y laptops principales rige la garantía extendida de 
     # --------------------------------------------------------------------------
     # ESCENARIO 2: CONTEXT ENGINEERING OPTIMIZADO
     # --------------------------------------------------------------------------
-    # Aplicamos Pipeline de Context Engineering:
     # 1. Filtrado por Umbral de Similitud Coseno (elimina ruido N(C))
     filtered_docs = filter_by_cosine_similarity(raw_results, threshold=0.45)
-    
+
     # 2. Reordenamiento de Posición (Evita Lost in the Middle)
     reordered_docs = long_context_reorder(filtered_docs)
-    
+
     # 3. Extracción/Compresión de Evidencia Relevante R(C)
     optimized_context = compress_context_to_evidence(reordered_docs, query)
     optimized_tokens = count_tokens(optimized_context)
@@ -160,9 +334,49 @@ Para estaciones de trabajo y laptops principales rige la garantía extendida de 
     print(f"📝 Contexto optimizado inyectado:\n{optimized_context}\n")
 
     # --------------------------------------------------------------------------
-    # 5. Generación con LLM usando LangChain
+    # 5. Generación con LLM usando LangChain y Fallback a AWS Bedrock
     # --------------------------------------------------------------------------
-    llm = ChatOpenAI(model="gpt-4o-mini", temperature=0.0)
+    print("─── [ESCENARIO 3: GENERACIÓN CON LLM Y FALLBACK RESILIENTE] ───")
+
+    openai_model_name = os.environ.get("OPENAI_MODEL_NAME", "gpt-4o-mini")
+    bedrock_model_id = os.environ.get("BEDROCK_MODEL_ID", "anthropic.claude-3-haiku-20240307-v1:0")
+
+    # Proveedor Principal: OpenAI
+    primary_llm = None
+    if openai_api_key and HAS_OPENAI:
+        if simulate_failure:
+            def simulate_failing_call(prompt_input):
+                raise RuntimeError("Simulación forzada de error en API de OpenAI (SIMULATE_OPENAI_FAILURE=true)")
+            primary_llm = RunnableLambda(simulate_failing_call)
+        else:
+            primary_llm = ChatOpenAI(model=openai_model_name, temperature=0.0)
+
+    # Proveedor Fallback: AWS Bedrock
+    fallback_llm = get_bedrock_llm()
+
+    # Construcción de la cadena con soporte nativo de with_fallbacks en LangChain
+    if primary_llm is not None and fallback_llm is not None:
+        print("🔗 Arquitectura de Resiliencia:")
+        print(f"   ├── 🥇 Proveedor Principal: OpenAI ({openai_model_name})")
+        print(f"   └── 🥈 Proveedor Fallback:  AWS Bedrock ({bedrock_model_id})")
+
+        def on_fallback_triggered(prompt_input):
+            print(f"\n⚠️  [FALLBACK ACTIVADO]: Fallo o indisponibilidad en la llamada a OpenAI.")
+            print(f"🔄 Redirigiendo petición a AWS Bedrock (Modelo: {bedrock_model_id})...\n")
+            return prompt_input
+
+        resilient_fallback = RunnableLambda(on_fallback_triggered) | fallback_llm
+        llm = primary_llm.with_fallbacks([resilient_fallback])
+
+    elif primary_llm is not None:
+        print(f"ℹ️  Operando únicamente con OpenAI ({openai_model_name}). AWS Bedrock no configurado.")
+        llm = primary_llm
+    elif fallback_llm is not None:
+        print(f"ℹ️  Operando directamente con AWS Bedrock ({bedrock_model_id}) como proveedor principal.")
+        llm = fallback_llm
+    else:
+        print("❌ ERROR: No hay ningún proveedor LLM disponible (ni OpenAI ni AWS Bedrock).")
+        return
 
     prompt_template = ChatPromptTemplate.from_messages([
         ("system", "Responde a la consulta del usuario de forma precisa basándote ÚNICAMENTE en el contexto de evidencia suministrado."),
@@ -171,10 +385,12 @@ Para estaciones de trabajo y laptops principales rige la garantía extendida de 
 
     chain = prompt_template | llm | StrOutputParser()
 
-    print("🤖 Generando respuesta final con LangChain...")
-    response = chain.invoke({"context": optimized_context, "query": query})
-
-    print(f"\n✅ RESPUETA FINAL DEL LLM (Y):\n{response}\n")
+    print("\n🤖 Generando respuesta final con LangChain...")
+    try:
+        response = chain.invoke({"context": optimized_context, "query": query})
+        print(f"\n✅ RESPUESTA FINAL DEL LLM (Y):\n{response}\n")
+    except Exception as e:
+        print(f"\n❌ Error durante la generación del LLM: {e}")
 
     print("=" * 75)
     print("MÉTRICAS Y EJECUCIÓN DE CONTEXT ENGINEERING COMPLETADAS.")
@@ -183,3 +399,4 @@ Para estaciones de trabajo y laptops principales rige la garantía extendida de 
 
 if __name__ == "__main__":
     main()
+

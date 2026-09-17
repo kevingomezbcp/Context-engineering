@@ -1,6 +1,8 @@
 langchain
 langchain-openai
 langchain-community
+langchain-aws
+boto3
 faiss-cpu
 python-dotenv
 matplotlib
