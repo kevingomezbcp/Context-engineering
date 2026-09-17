@@ -10,7 +10,12 @@ Este repositorio contiene materiales, investigaciones y ejemplos prácticos sobr
   - `context.md`: Documento principal con la teoría, fórmulas y conceptos clave de Context Engineering.
 - `demo/`: Laboratorio práctico interactivo.
   - `context_engineering_demo.ipynb`: Jupyter notebook demostrativo que aplica una política de clarificación para resolver ambigüedad ($Z$) utilizando `langchain` y `faiss`.
-  - `context_optimization_demo.py`: Script ejecutable de optimización de contexto y resiliencia multi-proveedor (OpenAI con fallback automático a AWS Bedrock).
+  - `main.py`: Punto de entrada de la demo de optimización de contexto y resiliencia multi-proveedor (OpenAI con fallback automático a AWS Bedrock).
+  - `config.py`: Gestión centralizada de configuración, credenciales y SSL corporativo.
+  - `data/`: Base de conocimiento de muestra y consultas.
+  - `optimizers/`: Algoritmos de Context Engineering (filtrado coseno, reordenamiento, compresión, conteo de tokens).
+  - `providers/`: Integraciones con OpenAI y AWS Bedrock, incluyendo fábricas resilientes con fallback.
+  - `runner.py`: Orquestador de ejecución de los escenarios.
   - `requirements.txt`: Dependencias para ejecutar el laboratorio.
   - `.env`: Archivo para variables de entorno (OpenAI y AWS Bedrock).
 - [`eval-context/`](eval-context/README.md): Demo con Ragas para comparar 28 contextos mockeados completos (instrucciones, historial, memoria, documentos y herramientas), con métricas de contradicción, salud y limpieza, juez LLM opcional y reporte HTML interactivo.
@@ -34,7 +39,7 @@ Este repositorio contiene materiales, investigaciones y ejemplos prácticos sobr
 4. Ejecuta el demo por consola o Jupyter:
    - Script de optimización de contexto con fallback:
      ```bash
-     python context_optimization_demo.py
+     python main.py
      ```
    - Jupyter Notebook interactivo:
      ```bash
