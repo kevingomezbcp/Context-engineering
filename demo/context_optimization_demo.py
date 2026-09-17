@@ -41,12 +41,10 @@ except ImportError:
     boto3 = None
     HAS_BOTO3 = False
 
-# Soporte opcional para certificados de Windows en entornos corporativos
-try:
-    import truststore
-    truststore.inject_into_ssl()
-except Exception:
-    pass
+# Filtrar advertencias de deprecación de LangChain para mantener consola limpia
+import warnings
+warnings.filterwarnings("ignore", message=".*BedrockEmbeddings was deprecated.*")
+warnings.filterwarnings("ignore", message=".*BedrockChat was deprecated.*")
 
 
 def create_bedrock_client():
@@ -101,6 +99,8 @@ def get_bedrock_llm():
     model_id = os.environ.get("BEDROCK_MODEL_ID", "anthropic.claude-3-haiku-20240307-v1:0")
     region = os.environ.get("AWS_REGION") or os.environ.get("AWS_DEFAULT_REGION") or "us-east-1"
     client = create_bedrock_client()
+    if client is None:
+        return None
 
     # 1. Intentar con ChatBedrock de langchain_aws
     try:
@@ -151,6 +151,8 @@ def get_bedrock_embeddings():
     model_id = os.environ.get("BEDROCK_EMBEDDING_MODEL_ID", "amazon.titan-embed-text-v1")
     region = os.environ.get("AWS_REGION") or os.environ.get("AWS_DEFAULT_REGION") or "us-east-1"
     client = create_bedrock_client()
+    if client is None:
+        return None
 
     # 1. langchain_aws
     try:
