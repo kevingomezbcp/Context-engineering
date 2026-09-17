@@ -41,11 +41,18 @@ except ImportError:
     boto3 = None
     HAS_BOTO3 = False
 
+# Soporte opcional para certificados de Windows en entornos corporativos
+try:
+    import truststore
+    truststore.inject_into_ssl()
+except Exception:
+    pass
+
 
 def create_bedrock_client():
     """
     Crea un cliente boto3 para AWS Bedrock Runtime respetando variables de entorno,
-    perfiles configurados o roles IAM.
+    perfiles configurados, roles IAM y configuración SSL corporativa.
     """
     if not HAS_BOTO3:
         return None
@@ -62,7 +69,23 @@ def create_bedrock_client():
                 session_kwargs["aws_session_token"] = os.environ.get("AWS_SESSION_TOKEN")
 
         session = boto3.Session(**session_kwargs)
-        return session.client("bedrock-runtime")
+
+        # Configuración de SSL para entornos corporativos (Zscaler, proxies bancarios, etc.)
+        verify_ssl = os.environ.get("AWS_VERIFY_SSL", "true").strip().lower() not in ("false", "0", "no")
+        ca_bundle = os.environ.get("AWS_CA_BUNDLE")
+
+        client_kwargs = {}
+        if ca_bundle:
+            client_kwargs["verify"] = ca_bundle
+        elif not verify_ssl:
+            client_kwargs["verify"] = False
+            try:
+                import urllib3
+                urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+            except Exception:
+                pass
+
+        return session.client("bedrock-runtime", **client_kwargs)
     except Exception as e:
         print(f"⚠️ Advertencia al inicializar cliente Bedrock boto3: {e}")
         return None
@@ -264,11 +287,24 @@ Para estaciones de trabajo y laptops principales rige la garantía extendida de 
     vector_store = None
     embedding_provider_used = None
 
+    # Configuración de cliente HTTP para OpenAI en entornos corporativos
+    openai_verify_ssl = os.environ.get("OPENAI_VERIFY_SSL", os.environ.get("AWS_VERIFY_SSL", "true")).strip().lower() not in ("false", "0", "no")
+    openai_http_client = None
+    if not openai_verify_ssl:
+        try:
+            import httpx
+            openai_http_client = httpx.Client(verify=False)
+        except Exception:
+            pass
+
     # Intentar OpenAI Embeddings si está disponible y no se simula falla
     if openai_api_key and HAS_OPENAI and not simulate_failure:
         try:
             openai_embed_model = os.environ.get("OPENAI_EMBEDDING_MODEL", "text-embedding-3-small")
-            embeddings = OpenAIEmbeddings(model=openai_embed_model)
+            embeddings_kwargs = {"model": openai_embed_model}
+            if openai_http_client:
+                embeddings_kwargs["http_client"] = openai_http_client
+            embeddings = OpenAIEmbeddings(**embeddings_kwargs)
             vector_store = FAISS.from_documents(raw_documents, embeddings)
             embedding_provider_used = f"OpenAI ({openai_embed_model})"
             print(f"   ✅ Embeddings calculados con: {embedding_provider_used}")
@@ -349,7 +385,10 @@ Para estaciones de trabajo y laptops principales rige la garantía extendida de 
                 raise RuntimeError("Simulación forzada de error en API de OpenAI (SIMULATE_OPENAI_FAILURE=true)")
             primary_llm = RunnableLambda(simulate_failing_call)
         else:
-            primary_llm = ChatOpenAI(model=openai_model_name, temperature=0.0)
+            chat_kwargs = {"model": openai_model_name, "temperature": 0.0}
+            if openai_http_client:
+                chat_kwargs["http_client"] = openai_http_client
+            primary_llm = ChatOpenAI(**chat_kwargs)
 
     # Proveedor Fallback: AWS Bedrock
     fallback_llm = get_bedrock_llm()
