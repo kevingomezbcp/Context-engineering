@@ -12,6 +12,7 @@ Este repositorio contiene materiales, investigaciones y ejemplos prácticos sobr
   - `context_engineering_demo.ipynb`: Jupyter notebook demostrativo que aplica una política de clarificación para resolver ambigüedad ($Z$) utilizando `langchain` y `faiss`.
   - `requirements.txt`: Dependencias para ejecutar el laboratorio.
   - `.env`: (Debe crearse a partir del `.env.example` interno) Archivo para variables de entorno (como `OPENAI_API_KEY`).
+- [`eval-context/`](eval-context/README.md): Demo con Ragas para comparar 28 contextos mockeados completos (instrucciones, historial, memoria, documentos y herramientas), con métricas de contradicción, salud y limpieza, juez LLM opcional y reporte HTML interactivo.
 - `presentation/`: Presentaciones generadas (PowerPoint).
   - Contiene las diferentes versiones e iteraciones de la baraja ejecutiva sobre Context Engineering.
 - `scripts/`: Código fuente en Python utilizado para generar recursos, como las presentaciones y la construcción programática del notebook.
